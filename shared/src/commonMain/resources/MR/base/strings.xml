@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app">Ziuq</string>
+    <string name="tagline">The Quizzes you love about the things you love most</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="username_id_not_empty">Username cannot be empty</string>
+    <string name="password_not_empty">Password cannot be empty</string>
+    <string name="no_account_register">Register →</string>
+
+</resources>

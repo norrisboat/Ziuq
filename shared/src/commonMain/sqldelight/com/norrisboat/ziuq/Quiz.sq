@@ -1,0 +1,23 @@
+CREATE TABLE quiz (
+  id INTEGER PRIMARY KEY NOT NULL,
+  results TEXT,
+  createdAt TEXT NOT NULL
+);
+
+insertQuiz:
+INSERT OR REPLACE INTO quiz VALUES ?;
+
+updateQuiz:
+UPDATE quiz SET results = ? WHERE id = ?;
+
+getAllQuizs:
+SELECT * FROM quiz ORDER BY createdAt;
+
+getQuiz:
+SELECT * FROM quiz WHERE id = ?;
+
+deleteQuiz:
+DELETE FROM quiz WHERE id = ?;
+
+deleteAllQuizs:
+DELETE FROM quiz;

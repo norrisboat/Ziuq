@@ -1,0 +1,23 @@
+CREATE TABLE question (
+  id INTEGER PRIMARY KEY NOT NULL,
+  quizId INTEGER NOT NULL,
+  createdAt TEXT NOT NULL
+);
+
+insertQuestion:
+INSERT OR REPLACE INTO question VALUES ?;
+
+getAllQuestions:
+SELECT * FROM question;
+
+getQuizQuestions:
+SELECT * FROM question WHERE quizId = ?;
+
+getQuestion:
+SELECT * FROM question WHERE id = ?;
+
+deleteQuestion:
+DELETE FROM question WHERE id = ?;
+
+deleteAllQuestions:
+DELETE FROM question;
