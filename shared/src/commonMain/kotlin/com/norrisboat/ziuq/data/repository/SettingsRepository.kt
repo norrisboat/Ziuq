@@ -12,6 +12,9 @@ interface SettingsRepository {
     fun getUserId(): String
     fun setUserId(id: String)
 
+    fun getDifficulties(): String
+    fun setDifficulties(difficulties: String)
+
 }
 
 class SettingsRepositoryImpl : KoinComponent, SettingsRepository {
@@ -34,10 +37,19 @@ class SettingsRepositoryImpl : KoinComponent, SettingsRepository {
         settings.putString(SettingsKey.UserId.name, id)
     }
 
+    override fun getDifficulties(): String {
+        return settings.getString(SettingsKey.Difficulty.name, "")
+    }
+
+    override fun setDifficulties(difficulties: String) {
+        settings.putString(SettingsKey.Difficulty.name, difficulties)
+    }
+
 
 }
 
 enum class SettingsKey {
     IsLoggedIn,
     UserId,
+    Difficulty,
 }

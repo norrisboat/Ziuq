@@ -1,0 +1,19 @@
+CREATE TABLE category (
+  key TEXT  PRIMARY KEY NOT NULL,
+  name TEXT NOT NULL
+);
+
+insertcategory:
+INSERT OR REPLACE INTO category VALUES ?;
+
+getAllcategories:
+SELECT * FROM category ORDER BY name;
+
+getcategory:
+SELECT * FROM category WHERE key = ?;
+
+deletecategory:
+DELETE FROM category WHERE key = ?;
+
+deleteAllcategorys:
+DELETE FROM category;

@@ -1,0 +1,19 @@
+CREATE TABLE type (
+  key TEXT  PRIMARY KEY NOT NULL,
+  name TEXT NOT NULL
+);
+
+insertType:
+INSERT OR REPLACE INTO type VALUES ?;
+
+getAllTypes:
+SELECT * FROM type ORDER BY name;
+
+gettype:
+SELECT * FROM type WHERE key = ?;
+
+deletetype:
+DELETE FROM type WHERE key = ?;
+
+deleteAlltypes:
+DELETE FROM type;

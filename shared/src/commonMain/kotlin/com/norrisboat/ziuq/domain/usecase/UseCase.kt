@@ -1,13 +1,10 @@
 package com.norrisboat.ziuq.domain.usecase
 
 import com.norrisboat.ziuq.domain.utils.FlowResult
-import com.norrisboat.ziuq.domain.utils.asFlowResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -25,4 +22,6 @@ abstract class UseCase<out Type, in Params> where Type : Any {
             }
         }
     }
+
+    object Nothing
 }

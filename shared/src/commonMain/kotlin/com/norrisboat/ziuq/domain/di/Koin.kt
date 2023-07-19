@@ -7,6 +7,7 @@ import com.norrisboat.ziuq.data.repository.AuthRepositoryImpl
 import com.norrisboat.ziuq.data.repository.SettingsRepository
 import com.norrisboat.ziuq.data.repository.SettingsRepositoryImpl
 import com.norrisboat.ziuq.domain.usecase.LoginUseCase
+import com.norrisboat.ziuq.domain.usecase.QuizSetupUseCase
 import com.norrisboat.ziuq.domain.usecase.RegisterUseCase
 import com.russhwolf.settings.Settings
 import io.ktor.client.HttpClient
@@ -47,6 +48,7 @@ val repositoryModule = module {
 val useCaseModule = module {
     single { LoginUseCase(get()) }
     single { RegisterUseCase(get()) }
+    single { QuizSetupUseCase(get()) }
 }
 
 val servicesModule = module {
