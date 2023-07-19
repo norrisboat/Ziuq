@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
@@ -89,7 +88,10 @@ fun LoginScreen(navigator: DestinationsNavigator) {
                     ZiuqText(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(end = ZiuqTheme.dimens.spacingRegular,top = ZiuqTheme.dimens.spacingBig)
+                            .padding(
+                                end = ZiuqTheme.dimens.spacingRegular,
+                                top = ZiuqTheme.dimens.spacingBig
+                            )
                             .clickable { viewModel.openRegister() },
                         textAlign = TextAlign.End,
                         text = Labels().noAccountRegister.string(),

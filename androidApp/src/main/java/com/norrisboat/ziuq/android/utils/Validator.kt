@@ -20,3 +20,21 @@ class NonEmptyValidator(private var errorMessage: String = "Text cannot be empty
     }
 
 }
+
+class MinLengthValidator(
+    private val minLength: Int,
+    private var errorMessage: String = "Text should be more than $minLength characters"
+) : Validator {
+    override fun validate(text: String): Boolean {
+        return text.trim().length > minLength
+    }
+
+    override fun setError(message: String) {
+        errorMessage = message
+    }
+
+    override fun getError(): String {
+        return errorMessage
+    }
+
+}

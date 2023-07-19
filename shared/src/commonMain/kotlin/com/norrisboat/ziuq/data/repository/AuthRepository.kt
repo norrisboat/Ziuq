@@ -1,6 +1,7 @@
 package com.norrisboat.ziuq.data.repository
 
 import com.norrisboat.ziuq.data.remote.request.LoginRequest
+import com.norrisboat.ziuq.data.remote.request.RegisterRequest
 import com.norrisboat.ziuq.data.remote.result.LoginResult
 import com.norrisboat.ziuq.data.remote.result.RegisterResult
 import com.norrisboat.ziuq.data.remote.service.AuthService
@@ -12,7 +13,7 @@ interface AuthRepository {
 
     suspend fun login(loginRequest: LoginRequest): Result<LoginResult>
 
-    suspend fun register(username: String, password: String): Result<RegisterResult>
+    suspend fun register(registerRequest: RegisterRequest): Result<RegisterResult>
 
 }
 
@@ -24,11 +25,8 @@ class AuthRepositoryImpl : KoinComponent, AuthRepository {
         return authService.login(loginRequest).getResults()
     }
 
-    override suspend fun register(
-        username: String,
-        password: String
-    ): Result<RegisterResult> {
-        return authService.register(username, password).getResults()
+    override suspend fun register(registerRequest: RegisterRequest): Result<RegisterResult> {
+        return authService.register(registerRequest).getResults()
     }
 
 }

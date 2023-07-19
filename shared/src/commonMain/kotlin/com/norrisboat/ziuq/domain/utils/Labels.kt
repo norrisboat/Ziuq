@@ -14,4 +14,5 @@ class Labels {
     val passwordEmpty: StringDesc = StringDesc.Resource(MR.strings.password_not_empty)
     val usernameEmpty: StringDesc = StringDesc.Resource(MR.strings.username_id_not_empty)
     val noAccountRegister: StringDesc = StringDesc.Resource(MR.strings.no_account_register)
+    val backButton: StringDesc = StringDesc.Resource(MR.strings.back_button)
 }

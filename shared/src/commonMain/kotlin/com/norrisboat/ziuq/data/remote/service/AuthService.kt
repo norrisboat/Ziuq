@@ -1,6 +1,7 @@
 package com.norrisboat.ziuq.data.remote.service
 
 import com.norrisboat.ziuq.data.remote.request.LoginRequest
+import com.norrisboat.ziuq.data.remote.request.RegisterRequest
 import com.norrisboat.ziuq.data.remote.result.BaseResult
 import com.norrisboat.ziuq.data.remote.result.LoginResult
 import com.norrisboat.ziuq.data.remote.result.RegisterResult
@@ -19,7 +20,7 @@ interface AuthService {
 
     suspend fun login(loginRequest: LoginRequest): BaseResult<LoginResult?>
 
-    suspend fun register(username: String, password: String): BaseResult<RegisterResult?>
+    suspend fun register(registerRequest: RegisterRequest): BaseResult<RegisterResult?>
 
 }
 
@@ -37,11 +38,11 @@ class AuthServiceImpl : KoinComponent, AuthService {
         return response.body()
     }
 
-    override suspend fun register(username: String, password: String): BaseResult<RegisterResult?> {
+    override suspend fun register(registerRequest: RegisterRequest): BaseResult<RegisterResult?> {
         val response = httpClient.post {
             apiUrl(Endpoint.makeEndpoint(Endpoint.Path.REGISTER))
             contentType(ContentType.Application.Json)
-            setBody(LoginRequest(username, password))
+            setBody(registerRequest)
         }
 
         return response.body()

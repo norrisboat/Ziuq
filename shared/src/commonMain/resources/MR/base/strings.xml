@@ -9,5 +9,6 @@
     <string name="username_id_not_empty">Username cannot be empty</string>
     <string name="password_not_empty">Password cannot be empty</string>
     <string name="no_account_register">Register →</string>
+    <string name="back_button">Back button</string>
 
 </resources>
