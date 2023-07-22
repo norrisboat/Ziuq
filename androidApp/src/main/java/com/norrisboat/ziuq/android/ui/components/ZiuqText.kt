@@ -6,6 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.norrisboat.ziuq.android.theme.ZiuqTheme
@@ -18,7 +19,8 @@ fun ZiuqText(
     color: Color = MaterialTheme.colorScheme.onBackground,
     textAlign: TextAlign = TextAlign.Center,
     type: ZiuqTextType,
-    fontWeight: FontWeight? = null
+    fontWeight: FontWeight? = null,
+    textStyle: TextStyle? = null
 ) {
     Text(
         modifier = modifier,
@@ -32,6 +34,7 @@ fun ZiuqText(
             ZiuqTextType.Label -> MaterialTheme.typography.bodyMedium
             ZiuqTextType.MediumLabel -> MaterialTheme.typography.labelMedium
             ZiuqTextType.SmallLabel -> MaterialTheme.typography.labelSmall
+            ZiuqTextType.Custom -> textStyle ?: MaterialTheme.typography.bodyMedium
         },
         textAlign = textAlign,
         fontWeight = fontWeight
@@ -45,7 +48,8 @@ enum class ZiuqTextType {
     SubTitle,
     Label,
     MediumLabel,
-    SmallLabel
+    SmallLabel,
+    Custom
 }
 
 @DevicePreviews

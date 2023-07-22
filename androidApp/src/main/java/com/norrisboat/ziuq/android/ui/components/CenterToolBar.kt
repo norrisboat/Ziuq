@@ -10,6 +10,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.norrisboat.ziuq.android.theme.ZiuqTheme
@@ -61,7 +62,8 @@ fun CenterToolBar(
         title = {
             ZiuqText(
                 text = title ?: destination?.topBarTitle(navBackStackEntry) ?: "",
-                type = ZiuqTextType.SubTitle
+                type = ZiuqTextType.SubTitle,
+                fontWeight = FontWeight.Bold
             )
         }
     )
@@ -72,7 +74,7 @@ fun CenterToolBar(
 @Composable
 fun CenterToolBarPreview() {
     ZiuqTheme {
-        CenterToolBar()
+        CenterToolBar(title = "Dummy title")
     }
 }
 

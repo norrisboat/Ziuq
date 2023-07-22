@@ -10,5 +10,7 @@
     <string name="password_not_empty">Password cannot be empty</string>
     <string name="no_account_register">Register →</string>
     <string name="back_button">Back button</string>
+    <string name="hello">Hello</string>
+    <string name="dear_user">Akwasi Boateng</string>
 
 </resources>

@@ -4,8 +4,12 @@ import com.norrisboat.ziuq.data.remote.service.AuthService
 import com.norrisboat.ziuq.data.remote.service.AuthServiceImpl
 import com.norrisboat.ziuq.data.repository.AuthRepository
 import com.norrisboat.ziuq.data.repository.AuthRepositoryImpl
+import com.norrisboat.ziuq.data.repository.QuizDataRepository
+import com.norrisboat.ziuq.data.repository.QuizDataRepositoryImpl
 import com.norrisboat.ziuq.data.repository.SettingsRepository
 import com.norrisboat.ziuq.data.repository.SettingsRepositoryImpl
+import com.norrisboat.ziuq.domain.usecase.GetCategoriesUseCase
+import com.norrisboat.ziuq.domain.usecase.GetDifficultyUseCase
 import com.norrisboat.ziuq.domain.usecase.LoginUseCase
 import com.norrisboat.ziuq.domain.usecase.QuizSetupUseCase
 import com.norrisboat.ziuq.domain.usecase.RegisterUseCase
@@ -41,6 +45,7 @@ fun initKoin() = initKoin {}
 val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl() }
     single<SettingsRepository> { SettingsRepositoryImpl() }
+    single<QuizDataRepository> { QuizDataRepositoryImpl() }
 
     single { Settings() }
 }
@@ -49,6 +54,8 @@ val useCaseModule = module {
     single { LoginUseCase(get()) }
     single { RegisterUseCase(get()) }
     single { QuizSetupUseCase(get()) }
+    single { GetCategoriesUseCase(get()) }
+    single { GetDifficultyUseCase(get()) }
 }
 
 val servicesModule = module {

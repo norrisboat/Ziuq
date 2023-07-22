@@ -1,5 +1,7 @@
 package com.norrisboat.ziuq.data.repository
 
+import com.norrisboat.ziuq.data.ui.QuizDifficulty
+import com.norrisboat.ziuq.data.ui.toQuizCategory
 import com.russhwolf.settings.Settings
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -12,7 +14,7 @@ interface SettingsRepository {
     fun getUserId(): String
     fun setUserId(id: String)
 
-    fun getDifficulties(): String
+    fun getDifficulties(): List<QuizDifficulty>
     fun setDifficulties(difficulties: String)
 
 }
@@ -37,8 +39,9 @@ class SettingsRepositoryImpl : KoinComponent, SettingsRepository {
         settings.putString(SettingsKey.UserId.name, id)
     }
 
-    override fun getDifficulties(): String {
-        return settings.getString(SettingsKey.Difficulty.name, "")
+    override fun getDifficulties(): List<QuizDifficulty> {
+        return settings.getString(SettingsKey.Difficulty.name, "").split(",")
+            .map { it.trim().toQuizCategory() }
     }
 
     override fun setDifficulties(difficulties: String) {

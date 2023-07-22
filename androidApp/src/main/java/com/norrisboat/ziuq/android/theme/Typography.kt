@@ -21,7 +21,7 @@ private fun urbanist() = FontFamily(
 )
 
 @Composable
-private fun spaceGrotesk() = FontFamily(
+fun spaceGrotesk() = FontFamily(
     spaceGroteskRegular()!!,
     spaceGroteskBold()!!,
     spaceGroteskLight()!!,
