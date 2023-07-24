@@ -1,5 +1,5 @@
 CREATE TABLE quiz (
-  id INTEGER PRIMARY KEY NOT NULL,
+  id TEXT PRIMARY KEY NOT NULL,
   results TEXT,
   createdAt TEXT NOT NULL
 );

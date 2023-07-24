@@ -25,6 +25,8 @@ import com.norrisboat.ziuq.android.theme.GreenPrimary
 import com.norrisboat.ziuq.android.theme.ZiuqTheme
 import com.norrisboat.ziuq.android.ui.components.CenterToolBar
 import com.norrisboat.ziuq.android.ui.components.DifficultyItem
+import com.norrisboat.ziuq.android.ui.destinations.HomeScreenDestination
+import com.norrisboat.ziuq.android.ui.destinations.QuizCreatingScreenDestination
 import com.norrisboat.ziuq.android.utils.DevicePreviews
 import com.norrisboat.ziuq.android.utils.dimen
 import com.norrisboat.ziuq.android.utils.fakeDestination
@@ -55,7 +57,6 @@ fun DifficultyScreen(navigator: DestinationsNavigator, categoryName: String, cat
         contentAlignment = Alignment.Center
     ) {
         Column(
-            modifier = Modifier.padding(dimen().spacingMedium),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CenterToolBar(
@@ -82,14 +83,22 @@ fun DifficultyScreen(navigator: DestinationsNavigator, categoryName: String, cat
                         modifier = Modifier
                             .fillMaxWidth()
                             .fillMaxHeight(1f)
-                            .padding(top = dimen().spacingRegular),
+                            .padding(dimen().spacingMedium),
                         columns = GridCells.Fixed(2)
                     ) {
                         items((state as DifficultyScreenState.Success).categories) { quizDifficulty ->
                             DifficultyItem(
                                 modifier = Modifier.padding(dimen().spacingSmall),
                                 quizDifficulty = quizDifficulty
-                            )
+                            ) {
+                                navigator.navigate(
+                                    QuizCreatingScreenDestination(
+                                        categoryName,
+                                        categoryKey,
+                                        it.name
+                                    )
+                                )
+                            }
                         }
                     }
                 }

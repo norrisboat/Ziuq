@@ -3,6 +3,7 @@ package com.norrisboat.ziuq.android.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,7 +39,8 @@ import dev.icerock.moko.resources.compose.painterResource
 @Composable
 fun DifficultyItem(
     modifier: Modifier = Modifier,
-    quizDifficulty: QuizDifficulty
+    quizDifficulty: QuizDifficulty,
+    onDifficultSelected : (QuizDifficulty) -> Unit
 ) {
     Box(
         modifier = modifier
@@ -46,7 +48,8 @@ fun DifficultyItem(
             .height(240.dp)
             .clip(RoundedCornerShape(percent = 25))
             .background(LightYellow)
-            .border(1.dp, color = Color.White, shape = RoundedCornerShape(percent = 25)),
+            .border(1.dp, color = Color.White, shape = RoundedCornerShape(percent = 25))
+            .clickable { onDifficultSelected(quizDifficulty) },
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -88,7 +91,7 @@ fun DifficultyItemPreview() {
                 .fillMaxSize()
                 .padding(24.dp)
         ) {
-            DifficultyItem(quizDifficulty = QuizDifficulty("Easy", "easy", Images().easy))
+            DifficultyItem(quizDifficulty = QuizDifficulty("Easy", "easy", Images().easy)){}
         }
     }
 }

@@ -17,4 +17,5 @@ class Labels {
     val backButton: StringDesc = StringDesc.Resource(MR.strings.back_button)
     val dearUser: StringDesc = StringDesc.Resource(MR.strings.dear_user)
     val hello: StringDesc = StringDesc.Resource(MR.strings.hello)
+    val creatingQuiz: StringDesc = StringDesc.Resource(MR.strings.creating_quiz_message)
 }

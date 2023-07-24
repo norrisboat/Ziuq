@@ -2,6 +2,8 @@ package com.norrisboat.ziuq.domain.utils
 
 import com.norrisboat.ziuq.data.remote.result.BaseResult
 import com.norrisboat.ziuq.data.remote.result.NetworkError
+import com.norrisboat.ziuq.domain.utils.Endpoint.makeEndpoint
+import io.ktor.client.HttpClient
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -13,7 +15,7 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
-const val baseURL = "http://192.168.0.180:9000/"
+const val baseURL = "http://192.168.0.181:9000/"
 
 fun HttpRequestBuilder.apiUrl(path: String) {
     url {
@@ -70,4 +72,28 @@ val WhileViewSubscribed: SharingStarted = SharingStarted.WhileSubscribed(5000L)
 fun currentDate(): String {
     val instantNow = Clock.System.now().toLocalDateTime(TimeZone.UTC).date
     return instantNow.toString()
+}
+
+suspend fun HttpClient.makePostRequest(
+    request: Any? = null,
+    endPointPath: Endpoint.Path,
+    vararg parameters: String
+) = this.post {
+    apiUrl(endPointPath.makeEndpoint(*parameters))
+    contentType(ContentType.Application.Json)
+    if (request != null) {
+        setBody(request)
+    }
+}
+
+suspend fun HttpClient.makeGetRequest(
+    request: Any? = null,
+    endPointPath: Endpoint.Path,
+    vararg parameters: String
+) = this.get {
+    apiUrl(endPointPath.makeEndpoint(*parameters))
+    contentType(ContentType.Application.Json)
+    if (request != null) {
+        setBody(request)
+    }
 }

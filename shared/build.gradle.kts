@@ -44,6 +44,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-auth:2.3.2")
 
 
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+
                 implementation("io.insert-koin:koin-core:3.4.0")
                 implementation("io.github.aakira:napier:2.6.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")

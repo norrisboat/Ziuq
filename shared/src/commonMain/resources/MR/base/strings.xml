@@ -12,5 +12,6 @@
     <string name="back_button">Back button</string>
     <string name="hello">Hello</string>
     <string name="dear_user">Akwasi Boateng</string>
+    <string name="creating_quiz_message">Combining all ingredients for this quiz...</string>
 
 </resources>

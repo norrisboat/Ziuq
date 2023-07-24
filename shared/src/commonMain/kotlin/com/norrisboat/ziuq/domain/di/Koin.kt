@@ -2,12 +2,17 @@ package com.norrisboat.ziuq.domain.di
 
 import com.norrisboat.ziuq.data.remote.service.AuthService
 import com.norrisboat.ziuq.data.remote.service.AuthServiceImpl
+import com.norrisboat.ziuq.data.remote.service.QuizService
+import com.norrisboat.ziuq.data.remote.service.QuizServiceImpl
 import com.norrisboat.ziuq.data.repository.AuthRepository
 import com.norrisboat.ziuq.data.repository.AuthRepositoryImpl
 import com.norrisboat.ziuq.data.repository.QuizDataRepository
 import com.norrisboat.ziuq.data.repository.QuizDataRepositoryImpl
+import com.norrisboat.ziuq.data.repository.QuizRepository
+import com.norrisboat.ziuq.data.repository.QuizRepositoryImpl
 import com.norrisboat.ziuq.data.repository.SettingsRepository
 import com.norrisboat.ziuq.data.repository.SettingsRepositoryImpl
+import com.norrisboat.ziuq.domain.usecase.CreateQuizUseCase
 import com.norrisboat.ziuq.domain.usecase.GetCategoriesUseCase
 import com.norrisboat.ziuq.domain.usecase.GetDifficultyUseCase
 import com.norrisboat.ziuq.domain.usecase.LoginUseCase
@@ -46,6 +51,7 @@ val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl() }
     single<SettingsRepository> { SettingsRepositoryImpl() }
     single<QuizDataRepository> { QuizDataRepositoryImpl() }
+    single<QuizRepository> { QuizRepositoryImpl() }
 
     single { Settings() }
 }
@@ -56,10 +62,12 @@ val useCaseModule = module {
     single { QuizSetupUseCase(get()) }
     single { GetCategoriesUseCase(get()) }
     single { GetDifficultyUseCase(get()) }
+    single { CreateQuizUseCase(get()) }
 }
 
 val servicesModule = module {
     single<AuthService> { AuthServiceImpl() }
+    single<QuizService> { QuizServiceImpl() }
 
     single { createClient() }
 }

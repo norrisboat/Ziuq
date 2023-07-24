@@ -56,6 +56,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         contentAlignment = Alignment.Center
     ) {
         Column(
+            modifier = Modifier.padding(dimen().spacingMedium),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ZiuqText(
@@ -88,12 +89,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .fillMaxHeight(1f)
-                            .padding(
-                                top = dimen().spacingBig,
-                                start = dimen().spacingMedium,
-                                end = dimen().spacingMedium,
-                                bottom = dimen().spacingMedium
-                            ),
+                            .padding(top = dimen().spacingRegular),
                         columns = GridCells.Fixed(2)
                     ) {
                         items((state as HomeScreenState.Success).categories) { quizCategory ->
@@ -101,12 +97,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
                                 modifier = Modifier.padding(dimen().spacingSmall),
                                 quizCategory = quizCategory
                             ) {
-                                navigator.navigate(
-                                    DifficultyScreenDestination(
-                                        categoryName = it.name,
-                                        categoryKey = it.key
-                                    )
-                                )
+                                navigator.navigate(DifficultyScreenDestination(categoryName = it.name, categoryKey = it.key))
                             }
                         }
                     }

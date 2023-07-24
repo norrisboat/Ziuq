@@ -2,7 +2,7 @@ package com.norrisboat.ziuq.domain.utils
 
 object Endpoint {
 
-    fun Path.makeEndpoint( vararg parameters: String): String {
+    fun Path.makeEndpoint(vararg parameters: String): String {
         var endpoint = this.value
         parameters.forEach { param ->
             endpoint = endpoint.replaceFirst("%", param)
@@ -14,6 +14,7 @@ object Endpoint {
         LOGIN("/v1/auth/login"),
         REGISTER("/v1/auth/register"),
         QUIZ_SETUP("/v1/quiz/setup"),
+        CREATE_QUIZ("/v1/quiz/create/%"),
     }
 
 }
