@@ -1,5 +1,6 @@
 package com.norrisboat.ziuq.android.ui.components
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -8,6 +9,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -30,6 +32,7 @@ fun CenterToolBar(
     navController: NavHostController? = null,
     navigator: DestinationsNavigator? = null,
     title: String? = null,
+    subTitle: String? = null,
     showBackIcon: Boolean = true,
     backgroundColor: Color? = null
 ) {
@@ -60,11 +63,20 @@ fun CenterToolBar(
             }
         },
         title = {
-            ZiuqText(
-                text = title ?: destination?.topBarTitle(navBackStackEntry) ?: "",
-                type = ZiuqTextType.SubTitle,
-                fontWeight = FontWeight.Bold
-            )
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                ZiuqText(
+                    text = title ?: destination?.topBarTitle(navBackStackEntry) ?: "",
+                    type = ZiuqTextType.SubTitle,
+                    fontWeight = FontWeight.Bold
+                )
+                if (!subTitle.isNullOrBlank()) {
+                    ZiuqText(
+                        text = subTitle,
+                        type = ZiuqTextType.SmallLabel,
+                        fontWeight = FontWeight.Light
+                    )
+                }
+            }
         }
     )
 }
@@ -74,7 +86,10 @@ fun CenterToolBar(
 @Composable
 fun CenterToolBarPreview() {
     ZiuqTheme {
-        CenterToolBar(title = "Dummy title")
+        Column {
+            CenterToolBar(title = "Dummy title")
+            CenterToolBar(title = "Math Quiz", subTitle = "Easy")
+        }
     }
 }
 

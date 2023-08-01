@@ -40,7 +40,7 @@ import dev.icerock.moko.resources.compose.painterResource
 fun DifficultyItem(
     modifier: Modifier = Modifier,
     quizDifficulty: QuizDifficulty,
-    onDifficultSelected : (QuizDifficulty) -> Unit
+    onDifficultSelected: (QuizDifficulty) -> Unit
 ) {
     Box(
         modifier = modifier
@@ -91,7 +91,7 @@ fun DifficultyItemPreview() {
                 .fillMaxSize()
                 .padding(24.dp)
         ) {
-            DifficultyItem(quizDifficulty = QuizDifficulty("Easy", "easy", Images().easy)){}
+            DifficultyItem(quizDifficulty = QuizDifficulty("Easy", "easy", Images().easy)) {}
         }
     }
 }

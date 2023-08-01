@@ -1,8 +1,8 @@
 package com.norrisboat.ziuq.data.ui
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Serializable
 data class QuizUI(
@@ -10,5 +10,10 @@ data class QuizUI(
     val questions: List<QuizQuestion>
 ) {
     fun encode() = Json.encodeToString(this)
-    fun decode(json: String) = Json.decodeFromString<QuizUI>(json)
+
+    companion object {
+        fun decode(json: String) = Json.decodeFromString<QuizUI>(json)
+
+        val sample: QuizUI = QuizUI("", listOf(QuizQuestion.sample))
+    }
 }

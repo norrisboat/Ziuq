@@ -15,7 +15,7 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
-const val baseURL = "http://192.168.0.181:9000/"
+const val baseURL = "http://172.20.10.8:9000/"
 
 fun HttpRequestBuilder.apiUrl(path: String) {
     url {

@@ -1,6 +1,5 @@
 package com.norrisboat.ziuq.presentation.home
 
-import com.norrisboat.ziuq.data.ui.QuizCategory
 import com.norrisboat.ziuq.domain.usecase.GetCategoriesUseCase
 import com.norrisboat.ziuq.domain.usecase.UseCase
 import com.norrisboat.ziuq.domain.utils.FlowResult

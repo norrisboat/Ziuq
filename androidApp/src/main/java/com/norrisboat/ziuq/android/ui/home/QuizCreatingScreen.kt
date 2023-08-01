@@ -104,9 +104,14 @@ fun QuizCreatingScreen(
                 }
 
                 is CreateQuizScreenState.Success -> {
-                    navigator.navigate(QuizScreenDestination(quizUI = (state as CreateQuizScreenState.Success).quizUI.encode())) {
+                    navigator.navigate(
+                        QuizScreenDestination(
+                            quizUI = (state as CreateQuizScreenState.Success).quizUI.encode(),
+                            category = categoryName
+                        )
+                    ) {
                         popUpTo(HomeScreenDestination.route) {
-                            inclusive = true
+                            inclusive = false
                         }
                     }
                 }

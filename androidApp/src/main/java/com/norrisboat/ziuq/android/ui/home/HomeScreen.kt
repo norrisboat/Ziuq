@@ -97,7 +97,12 @@ fun HomeScreen(navigator: DestinationsNavigator) {
                                 modifier = Modifier.padding(dimen().spacingSmall),
                                 quizCategory = quizCategory
                             ) {
-                                navigator.navigate(DifficultyScreenDestination(categoryName = it.name, categoryKey = it.key))
+                                navigator.navigate(
+                                    DifficultyScreenDestination(
+                                        categoryName = it.name,
+                                        categoryKey = it.key
+                                    )
+                                )
                             }
                         }
                     }

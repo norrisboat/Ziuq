@@ -25,7 +25,6 @@ import com.norrisboat.ziuq.android.theme.GreenPrimary
 import com.norrisboat.ziuq.android.theme.ZiuqTheme
 import com.norrisboat.ziuq.android.ui.components.CenterToolBar
 import com.norrisboat.ziuq.android.ui.components.DifficultyItem
-import com.norrisboat.ziuq.android.ui.destinations.HomeScreenDestination
 import com.norrisboat.ziuq.android.ui.destinations.QuizCreatingScreenDestination
 import com.norrisboat.ziuq.android.utils.DevicePreviews
 import com.norrisboat.ziuq.android.utils.dimen

@@ -25,6 +25,8 @@ fun QuestionResult.toQuizQuestion(): QuizQuestion {
         question = questionResults?.question?.text ?: "",
         correctAnswer = questionResults?.correctAnswer ?: "",
         type = questionResults?.type ?: "",
-        incorrectAnswers = questionResults?.incorrectAnswers ?: emptyList()
+        incorrectAnswers = questionResults?.incorrectAnswers ?: emptyList(),
+        options = ((questionResults?.incorrectAnswers
+            ?: emptyList()) + (questionResults?.correctAnswer ?: "")).shuffled().subList(0, 4)
     )
 }

@@ -40,7 +40,7 @@ import dev.icerock.moko.resources.compose.painterResource
 fun CategoryItem(
     modifier: Modifier = Modifier,
     quizCategory: QuizCategory,
-    onCategoryClicked : (QuizCategory) -> Unit
+    onCategoryClicked: (QuizCategory) -> Unit
 ) {
     Box(
         modifier = modifier
@@ -53,7 +53,9 @@ fun CategoryItem(
         contentAlignment = Alignment.Center
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(dimen().spacingMedium),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimen().spacingMedium),
             verticalArrangement = Arrangement.spacedBy(dimen().spacingSmall),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -84,10 +86,12 @@ fun CategoryItem(
 @Composable
 fun CategoryItemPreview() {
     ZiuqTheme {
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp)) {
-            CategoryItem(quizCategory = QuizCategory("Science", "science", Images().science)){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(24.dp)
+        ) {
+            CategoryItem(quizCategory = QuizCategory("Science", "science", Images().science)) {
 
             }
         }

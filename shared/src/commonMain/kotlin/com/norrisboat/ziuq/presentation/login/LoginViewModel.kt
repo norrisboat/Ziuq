@@ -8,6 +8,7 @@ import com.norrisboat.ziuq.domain.usecase.UseCase
 import com.norrisboat.ziuq.domain.utils.FlowResult
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import kotlin.time.Duration.Companion.seconds
 
 open class LoginViewModel : KoinComponent, KMMViewModel() {
 
@@ -51,6 +53,7 @@ open class LoginViewModel : KoinComponent, KMMViewModel() {
             quizSetupUseCase.run(UseCase.Nothing).map {
                 when (it) {
                     is FlowResult.Success -> {
+                        delay(4.seconds)
                         settingsRepository.setIsLoggedIn(true)
                         _state.value = LoginScreenState.Success
                     }

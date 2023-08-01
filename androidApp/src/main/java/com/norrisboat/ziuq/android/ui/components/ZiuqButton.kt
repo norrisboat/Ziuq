@@ -36,25 +36,25 @@ fun ZiuqButton(
         shape = ZiuqShapes.small,
         border = BorderStroke(
             when (type) {
-                ZiuqButtonType.PrimaryStroke, ZiuqButtonType.SecondaryStroke -> 2.dp
+                ZiuqButtonType.PrimaryStroke, ZiuqButtonType.SecondaryStroke -> 0.5.dp
                 else -> 0.dp
             },
             when (type) {
                 ZiuqButtonType.PrimaryStroke -> GreenPrimary
                 ZiuqButtonType.SecondaryStroke -> DeepGreen
-                else -> Color.Transparent
+                else -> androidx.compose.material.MaterialTheme.colors.background
             },
         ),
         colors = ButtonDefaults.elevatedButtonColors(
             containerColor = when (type) {
                 ZiuqButtonType.Primary -> GreenPrimary
                 ZiuqButtonType.Secondary -> DeepGreen
-                ZiuqButtonType.PrimaryStroke, ZiuqButtonType.SecondaryStroke -> Color.Transparent
+                ZiuqButtonType.PrimaryStroke, ZiuqButtonType.SecondaryStroke -> androidx.compose.material.MaterialTheme.colors.background
             },
             disabledContainerColor = when (type) {
                 ZiuqButtonType.Primary -> GreenPrimary.copy(alpha = 0.5f)
                 ZiuqButtonType.Secondary -> DeepGreen.copy(alpha = 0.5f)
-                ZiuqButtonType.PrimaryStroke, ZiuqButtonType.SecondaryStroke -> Color.Transparent
+                ZiuqButtonType.PrimaryStroke, ZiuqButtonType.SecondaryStroke -> androidx.compose.material.MaterialTheme.colors.background
             },
             contentColor = when (type) {
                 ZiuqButtonType.Primary -> DeepGreen

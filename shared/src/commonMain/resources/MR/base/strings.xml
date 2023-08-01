@@ -13,5 +13,12 @@
     <string name="hello">Hello</string>
     <string name="dear_user">Akwasi Boateng</string>
     <string name="creating_quiz_message">Combining all ingredients for this quiz...</string>
+    <string name="question_number">Question %d</string>
+    <string name="number_question">%d Questions</string>
+    <string name="quiz_category">%s Quiz</string>
+    <string name="skip">Skip</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="congratulations_message">Well done on finishing the quiz. \n Try exploring the other categories.</string>
+    <string name="done">Done</string>
 
 </resources>

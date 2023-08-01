@@ -21,6 +21,7 @@ import com.norrisboat.ziuq.domain.usecase.RegisterUseCase
 import com.russhwolf.settings.Settings
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
@@ -74,7 +75,9 @@ val servicesModule = module {
 
 fun createClient(): HttpClient {
     return HttpClient(CIO) {
-
+        install(HttpTimeout) {
+            requestTimeoutMillis = 50000
+        }
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
