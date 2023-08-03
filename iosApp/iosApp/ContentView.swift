@@ -2,10 +2,14 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = Greeting().greet()
+    @ObservedObject var sessionViewModel = SessionViewModel.shared
 
 	var body: some View {
-		Text(greet)
+        if sessionViewModel.isLoggedIn || sessionViewModel.showHome {
+            HomeView()
+        } else {
+            LoginView()
+        }
 	}
 }
 

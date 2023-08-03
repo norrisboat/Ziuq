@@ -133,6 +133,10 @@ kotlin {
     tasks.matching { it.name == "metadataCommonMainProcessResources" }.configureEach {
         dependsOn(tasks.getByName("generateMRcommonMain"))
     }
+
+    kotlin.sourceSets.all {
+        languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+    }
 }
 
 android {

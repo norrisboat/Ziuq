@@ -1,5 +1,6 @@
 package com.norrisboat.ziuq.domain.utils
 
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -11,11 +12,11 @@ fun <T> Flow<Result<T>>.asFlowResult(): Flow<FlowResult<T>> {
         .map {
             it.fold(
                 onSuccess = { result ->
-//                    delay(5000)
+                    delay(5000)
                     FlowResult.Success(result)
                 },
                 onFailure = { error ->
-//                    delay(5000)
+                    delay(5000)
                     FlowResult.Error(error.message ?: "Something went wrong")
                 }
             )
