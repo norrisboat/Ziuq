@@ -91,7 +91,7 @@ fun CategoryItemPreview() {
                 .fillMaxSize()
                 .padding(24.dp)
         ) {
-            CategoryItem(quizCategory = QuizCategory("Science", "science", Images().science)) {
+            CategoryItem(quizCategory = QuizCategory.sample) {
 
             }
         }

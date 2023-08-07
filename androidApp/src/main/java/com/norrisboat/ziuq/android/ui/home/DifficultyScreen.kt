@@ -85,7 +85,7 @@ fun DifficultyScreen(navigator: DestinationsNavigator, categoryName: String, cat
                             .padding(dimen().spacingMedium),
                         columns = GridCells.Fixed(2)
                     ) {
-                        items((state as DifficultyScreenState.Success).categories) { quizDifficulty ->
+                        items((state as DifficultyScreenState.Success).difficulties) { quizDifficulty ->
                             DifficultyItem(
                                 modifier = Modifier.padding(dimen().spacingSmall),
                                 quizDifficulty = quizDifficulty

@@ -91,7 +91,7 @@ fun DifficultyItemPreview() {
                 .fillMaxSize()
                 .padding(24.dp)
         ) {
-            DifficultyItem(quizDifficulty = QuizDifficulty("Easy", "easy", Images().easy)) {}
+            DifficultyItem(quizDifficulty = QuizDifficulty.sample) {}
         }
     }
 }
