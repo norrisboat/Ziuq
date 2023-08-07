@@ -12,6 +12,7 @@ extension Color {
 	
 	static let deepGreen = Color("DeepGreen")
 	static let primaryGreen = Color("PrimaryGreen")
+    static let lightYellow = Color("LightYellow")
     static let label = Color(UIColor.label)
 
 	

@@ -17,6 +17,9 @@
 		F60D7E652A7B08060063A145 /* KMMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60D7E642A7B08060063A145 /* KMMViewModel.swift */; };
 		F67AA8702A7C43A0007E04C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AA86F2A7C43A0007E04C8 /* HomeView.swift */; };
 		F67AA8732A7C44FE007E04C8 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AA8722A7C44FE007E04C8 /* SessionViewModel.swift */; };
+		F67AA8752A7C836B007E04C8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AA8742A7C836B007E04C8 /* CategoryView.swift */; };
+		F68147F62A7ED5E600D80D2F /* DifficultyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68147F52A7ED5E600D80D2F /* DifficultyItemView.swift */; };
+		F68147F82A7ED83400D80D2F /* DifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68147F72A7ED83400D80D2F /* DifficultyView.swift */; };
 		F6BC17012A79BEFC00B9DA60 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC17002A79BEFC00B9DA60 /* LoginView.swift */; };
 		F6BC17042A79CA9200B9DA60 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC17032A79CA9200B9DA60 /* Color+Extensions.swift */; };
 		F6BC17062A79CAE400B9DA60 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC17052A79CAE400B9DA60 /* View+Extensions.swift */; };
@@ -49,6 +52,9 @@
 		F60D7E642A7B08060063A145 /* KMMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMMViewModel.swift; sourceTree = "<group>"; };
 		F67AA86F2A7C43A0007E04C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F67AA8722A7C44FE007E04C8 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
+		F67AA8742A7C836B007E04C8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		F68147F52A7ED5E600D80D2F /* DifficultyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyItemView.swift; sourceTree = "<group>"; };
+		F68147F72A7ED83400D80D2F /* DifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyView.swift; sourceTree = "<group>"; };
 		F6BC17002A79BEFC00B9DA60 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F6BC17032A79CA9200B9DA60 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		F6BC17052A79CAE400B9DA60 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 			children = (
 				F6BC17002A79BEFC00B9DA60 /* LoginView.swift */,
 				F67AA86F2A7C43A0007E04C8 /* HomeView.swift */,
+				F68147F72A7ED83400D80D2F /* DifficultyView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -152,6 +159,8 @@
 				F6BC17082A79CCE700B9DA60 /* ZiuqText.swift */,
 				F6BC170C2A79DA3100B9DA60 /* ZiuqTextField.swift */,
 				F60D7E5D2A7AC3370063A145 /* PrimaryButton.swift */,
+				F67AA8742A7C836B007E04C8 /* CategoryView.swift */,
+				F68147F52A7ED5E600D80D2F /* DifficultyItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,11 +264,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F68147F82A7ED83400D80D2F /* DifficultyView.swift in Sources */,
 				F60D7E5E2A7AC3370063A145 /* PrimaryButton.swift in Sources */,
 				F67AA8732A7C44FE007E04C8 /* SessionViewModel.swift in Sources */,
 				F6BC170D2A79DA3100B9DA60 /* ZiuqTextField.swift in Sources */,
 				F6BC17012A79BEFC00B9DA60 /* LoginView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				F68147F62A7ED5E600D80D2F /* DifficultyItemView.swift in Sources */,
+				F67AA8752A7C836B007E04C8 /* CategoryView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				F67AA8702A7C43A0007E04C8 /* HomeView.swift in Sources */,
 				F6BC170B2A79CE5800B9DA60 /* Font+Extensions.swift in Sources */,
@@ -401,6 +413,7 @@
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -429,6 +442,7 @@
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

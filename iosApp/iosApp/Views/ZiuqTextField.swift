@@ -19,7 +19,7 @@ struct ZiuqTextField: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            ZiuqText(text: placeholder, type: isFilled ? .custom : .label)
+            ZiuqText(text: placeholder, type: isFilled ? .custom(.urbanist, .caption, 12) : .label)
                 .foregroundColor(isFilled ? textColor : .gray.opacity(0.5))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .scaleEffect(isFilled ? 0.75 : 1, anchor: .topLeading)
