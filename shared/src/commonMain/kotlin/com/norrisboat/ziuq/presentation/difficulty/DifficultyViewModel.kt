@@ -5,11 +5,12 @@ import com.norrisboat.ziuq.domain.usecase.UseCase
 import com.norrisboat.ziuq.domain.utils.FlowResult
 import com.norrisboat.ziuq.domain.utils.WhileViewSubscribed
 import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.rickclephas.kmm.viewmodel.stateIn
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -18,10 +19,11 @@ open class DifficultyViewModel : KoinComponent, KMMViewModel() {
 
     private val getDifficultyUseCase: GetDifficultyUseCase by inject()
 
-    private val _state = MutableStateFlow<DifficultyScreenState>(DifficultyScreenState.Idle)
+    private val _state = MutableStateFlow<DifficultyScreenState>(viewModelScope, DifficultyScreenState.Idle)
+    @NativeCoroutinesState
     var state =
         _state.stateIn(
-            viewModelScope.coroutineScope,
+            viewModelScope,
             WhileViewSubscribed,
             DifficultyScreenState.Idle
         )
@@ -30,7 +32,7 @@ open class DifficultyViewModel : KoinComponent, KMMViewModel() {
         getDifficulties()
     }
 
-    fun getDifficulties() {
+    private fun getDifficulties() {
         viewModelScope.coroutineScope.launch {
             getDifficultyUseCase.run(params = UseCase.Nothing).map {
                 when (it) {

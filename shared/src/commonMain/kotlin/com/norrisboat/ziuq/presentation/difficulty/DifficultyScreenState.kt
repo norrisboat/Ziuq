@@ -8,7 +8,7 @@ sealed interface DifficultyScreenState {
 
     object Idle : DifficultyScreenState
 
-    data class Success(val categories: List<QuizDifficulty>) : DifficultyScreenState
+    data class Success(val difficulties: List<QuizDifficulty>) : DifficultyScreenState
 
     data class Error(val errorMessage: String) : DifficultyScreenState
 

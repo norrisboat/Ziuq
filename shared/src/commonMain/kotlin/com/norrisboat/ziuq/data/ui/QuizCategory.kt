@@ -5,7 +5,11 @@ import com.norrisboat.ziuq.domain.utils.Images
 import dev.icerock.moko.resources.ImageResource
 
 
-data class QuizCategory(val name: String, val key: String, val imageResource: ImageResource)
+data class QuizCategory(val name: String, val key: String, val imageResource: ImageResource) {
+    companion object {
+        val sample = QuizCategory("Science", "science", Images().science)
+    }
+}
 
 fun Category.toQuizCategory() : QuizCategory {
     val imageResource = when(this.key) {

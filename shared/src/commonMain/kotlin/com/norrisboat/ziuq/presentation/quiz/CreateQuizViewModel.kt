@@ -5,12 +5,13 @@ import com.norrisboat.ziuq.domain.usecase.CreateQuizUseCase
 import com.norrisboat.ziuq.domain.utils.FlowResult
 import com.norrisboat.ziuq.domain.utils.WhileViewSubscribed
 import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
+import com.rickclephas.kmm.viewmodel.stateIn
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -20,10 +21,11 @@ open class CreateQuizViewModel : KoinComponent, KMMViewModel() {
     private var creatingQuizJob: Job? = null
     private val createQuizUseCase: CreateQuizUseCase by inject()
 
-    private val _state = MutableStateFlow<CreateQuizScreenState>(CreateQuizScreenState.Loading)
+    private val _state = MutableStateFlow<CreateQuizScreenState>(viewModelScope, CreateQuizScreenState.Loading)
+    @NativeCoroutinesState
     var state =
         _state.stateIn(
-            viewModelScope.coroutineScope,
+            viewModelScope,
             WhileViewSubscribed,
             CreateQuizScreenState.Loading
         )

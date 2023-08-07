@@ -8,30 +8,25 @@ import com.norrisboat.ziuq.domain.usecase.UseCase
 import com.norrisboat.ziuq.domain.utils.FlowResult
 import com.norrisboat.ziuq.domain.utils.WhileViewSubscribed
 import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmm.viewmodel.stateIn
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
-import io.github.aakira.napier.Napier
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import kotlin.time.Duration.Companion.seconds
 
-@OptIn(ExperimentalCoroutinesApi::class)
 open class LoginViewModel : KoinComponent, KMMViewModel() {
 
     private val loginUseCase: LoginUseCase by inject()
     private val quizSetupUseCase: QuizSetupUseCase by inject()
     private val settingsRepository: SettingsRepository by inject()
 
-    private val _state = MutableStateFlow<LoginScreenState>(LoginScreenState.Idle)
+    private val _state = MutableStateFlow<LoginScreenState>(viewModelScope, LoginScreenState.Idle)
+
     @NativeCoroutinesState
     var state = _state.stateIn(viewModelScope, WhileViewSubscribed, LoginScreenState.Idle)
 

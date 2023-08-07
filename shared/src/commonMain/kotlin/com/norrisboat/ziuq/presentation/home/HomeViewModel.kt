@@ -5,11 +5,13 @@ import com.norrisboat.ziuq.domain.usecase.UseCase
 import com.norrisboat.ziuq.domain.utils.FlowResult
 import com.norrisboat.ziuq.domain.utils.WhileViewSubscribed
 import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import com.rickclephas.kmm.viewmodel.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -18,24 +20,25 @@ open class HomeViewModel : KoinComponent, KMMViewModel() {
 
     private val getCategoriesUseCase: GetCategoriesUseCase by inject()
 
-    private val _state = MutableStateFlow<HomeScreenState>(HomeScreenState.Idle)
+    private val _state = MutableStateFlow<HomeScreenState>(viewModelScope, HomeScreenState.Idle)
+    @NativeCoroutinesState
     var state =
-        _state.stateIn(viewModelScope.coroutineScope, WhileViewSubscribed, HomeScreenState.Idle)
+        _state.stateIn(viewModelScope, WhileViewSubscribed, HomeScreenState.Idle)
 
     init {
         getCategories()
     }
 
-    fun getCategories() {
+    private fun getCategories() {
         viewModelScope.coroutineScope.launch {
-            getCategoriesUseCase.run(params = UseCase.Nothing).map {
-                when (it) {
+            getCategoriesUseCase.run(params = UseCase.Nothing).map { result ->
+                when (result) {
                     is FlowResult.Success -> {
-                        _state.value = HomeScreenState.Success(it.data)
+                        _state.update { HomeScreenState.Success(result.data) }
                     }
 
                     is FlowResult.Error -> {
-                        _state.value = HomeScreenState.Error(it.exception)
+                        _state.value = HomeScreenState.Error(result.exception)
                     }
 
                     FlowResult.Loading -> {

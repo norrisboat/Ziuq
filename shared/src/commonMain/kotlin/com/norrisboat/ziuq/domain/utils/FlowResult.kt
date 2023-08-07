@@ -12,11 +12,11 @@ fun <T> Flow<Result<T>>.asFlowResult(): Flow<FlowResult<T>> {
         .map {
             it.fold(
                 onSuccess = { result ->
-                    delay(5000)
+//                    delay(1500)
                     FlowResult.Success(result)
                 },
                 onFailure = { error ->
-                    delay(5000)
+//                    delay(1500)
                     FlowResult.Error(error.message ?: "Something went wrong")
                 }
             )
