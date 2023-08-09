@@ -11,8 +11,8 @@ data class QuizCategory(val name: String, val key: String, val imageResource: Im
     }
 }
 
-fun Category.toQuizCategory() : QuizCategory {
-    val imageResource = when(this.key) {
+fun Category.toQuizCategory(): QuizCategory {
+    val imageResource = when (this.key) {
         "science" -> Images().science
         "film_and_tv" -> Images().film
         "music" -> Images().music

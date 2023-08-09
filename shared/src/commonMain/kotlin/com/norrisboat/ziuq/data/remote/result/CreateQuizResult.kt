@@ -28,5 +28,6 @@ fun CreateQuizResult.toQuiz(results: String? = null): Quiz {
 }
 
 fun CreateQuizResult.toQuestions(): List<Question> {
-    return questionResults?.map { Question(it.questionId ?: "", this.quizId ?: "", currentDate()) } ?: emptyList()
+    return questionResults?.map { Question(it.questionId ?: "", this.quizId ?: "", currentDate()) }
+        ?: emptyList()
 }

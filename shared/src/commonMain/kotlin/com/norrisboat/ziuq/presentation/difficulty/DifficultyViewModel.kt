@@ -19,7 +19,9 @@ open class DifficultyViewModel : KoinComponent, KMMViewModel() {
 
     private val getDifficultyUseCase: GetDifficultyUseCase by inject()
 
-    private val _state = MutableStateFlow<DifficultyScreenState>(viewModelScope, DifficultyScreenState.Idle)
+    private val _state =
+        MutableStateFlow<DifficultyScreenState>(viewModelScope, DifficultyScreenState.Idle)
+
     @NativeCoroutinesState
     var state =
         _state.stateIn(

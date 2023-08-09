@@ -13,6 +13,6 @@ data class TypeResult(
     val name: String? = null
 )
 
-fun TypeResult.toType() : Type {
+fun TypeResult.toType(): Type {
     return Type(this.key ?: "", this.name ?: "")
 }

@@ -1,8 +1,6 @@
 package com.norrisboat.ziuq.domain.usecase
 
-import com.norrisboat.ziuq.data.remote.request.LoginRequest
 import com.norrisboat.ziuq.data.remote.request.RegisterRequest
-import com.norrisboat.ziuq.data.remote.result.LoginResult
 import com.norrisboat.ziuq.data.remote.result.RegisterResult
 import com.norrisboat.ziuq.data.repository.AuthRepository
 import com.norrisboat.ziuq.domain.utils.FlowResult

@@ -12,7 +12,7 @@ data class QuizQuestion(
     val type: String
 ) {
     companion object {
-        val sample : QuizQuestion  = QuizQuestion(
+        val sample: QuizQuestion = QuizQuestion(
             "", "What is a bird?",
             "Animal",
             listOf("Person", "Object", "Town"),

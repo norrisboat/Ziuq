@@ -13,6 +13,6 @@ data class CategoryResult(
     val name: String? = null
 )
 
-fun CategoryResult.toType() : Category {
+fun CategoryResult.toType(): Category {
     return Category(this.key ?: "", this.name ?: "")
 }

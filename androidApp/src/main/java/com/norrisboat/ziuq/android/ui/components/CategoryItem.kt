@@ -30,7 +30,6 @@ import com.norrisboat.ziuq.android.theme.spaceGrotesk
 import com.norrisboat.ziuq.android.utils.DevicePreviews
 import com.norrisboat.ziuq.android.utils.dimen
 import com.norrisboat.ziuq.data.ui.QuizCategory
-import com.norrisboat.ziuq.domain.utils.Images
 import com.ramcosta.composedestinations.annotation.Destination
 import dev.icerock.moko.resources.compose.painterResource
 
