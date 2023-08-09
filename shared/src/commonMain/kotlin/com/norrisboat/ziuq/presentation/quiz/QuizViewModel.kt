@@ -5,16 +5,16 @@ import com.norrisboat.ziuq.data.ui.QuizUI
 import com.norrisboat.ziuq.domain.utils.SingleEventFlow
 import com.norrisboat.ziuq.domain.utils.WhileViewSubscribed
 import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
-import io.github.aakira.napier.Napier
+import com.rickclephas.kmm.viewmodel.stateIn
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -25,47 +25,64 @@ class QuizViewModel : KoinComponent, KMMViewModel() {
 
     private var timerJob: Job? = null
 
-    private var _questionIndex: MutableStateFlow<Int> = MutableStateFlow(-1)
+    private var _questionIndex = MutableStateFlow(viewModelScope, -1)
+
+    @NativeCoroutinesState
     var questionNumber: StateFlow<Int> = _questionIndex.transformLatest {
         emit(it + 1)
     }.stateIn(
-        viewModelScope.coroutineScope,
+        viewModelScope,
         WhileViewSubscribed, 1
     )
 
-    private var _currentScore: MutableStateFlow<Int> = MutableStateFlow(0)
+    private var _currentScore = MutableStateFlow(viewModelScope, 0)
+
+    @NativeCoroutinesState
     var currentScore: StateFlow<Int> = _currentScore.transformLatest {
         emit(it)
     }.stateIn(
-        viewModelScope.coroutineScope,
+        viewModelScope,
         WhileViewSubscribed,
         0
     )
 
-    private var _timeLeft: MutableStateFlow<Float> = MutableStateFlow(100f)
+    private var _timeLeft = MutableStateFlow(viewModelScope, 100f)
+
+    @NativeCoroutinesState
     var timeLeft: StateFlow<Float> = _timeLeft.transformLatest {
         emit(it)
     }.stateIn(
-        viewModelScope.coroutineScope,
+        viewModelScope,
         WhileViewSubscribed,
         100f
     )
 
     private var questions: MutableList<QuizQuestion> = mutableListOf()
-    private var _currentQuestion: MutableStateFlow<QuizQuestion?> = MutableStateFlow(null)
 
+    private var _currentQuestion = MutableStateFlow<QuizQuestion?>(viewModelScope, null)
+
+    @NativeCoroutinesState
     val currentQuestion = _currentQuestion.stateIn(
-        viewModelScope.coroutineScope,
+        viewModelScope,
         WhileViewSubscribed, null
     )
 
     var completed = SingleEventFlow<Unit>()
 
+    private var _isCompleted = MutableStateFlow(viewModelScope, false)
+
+    @NativeCoroutinesState
+    val isCompleted = _isCompleted.stateIn(
+        viewModelScope,
+        WhileViewSubscribed, false
+    )
+
+
     init {
         viewModelScope.coroutineScope.launch {
             _questionIndex.collectLatest { index ->
                 if (questions.isNotEmpty()) {
-                    _currentQuestion.value = questions[index]
+                    _currentQuestion.update { questions[index] }
                     startCountDown()
                 }
             }
@@ -86,6 +103,7 @@ class QuizViewModel : KoinComponent, KMMViewModel() {
             }
             if (_questionIndex.value == questions.lastIndex) {
                 completed.tryEmit(Unit)
+                _isCompleted.value = true
             } else {
                 _questionIndex.update { it + 1 }
             }
@@ -120,7 +138,7 @@ class QuizViewModel : KoinComponent, KMMViewModel() {
             delay(delayInSeconds)
         }
 
-        if (count == 0f) {
+        if (count == -1f) {
             nextQuestion("")
         }
     }

@@ -21,7 +21,9 @@ open class CreateQuizViewModel : KoinComponent, KMMViewModel() {
     private var creatingQuizJob: Job? = null
     private val createQuizUseCase: CreateQuizUseCase by inject()
 
-    private val _state = MutableStateFlow<CreateQuizScreenState>(viewModelScope, CreateQuizScreenState.Loading)
+    private val _state =
+        MutableStateFlow<CreateQuizScreenState>(viewModelScope, CreateQuizScreenState.Loading)
+
     @NativeCoroutinesState
     var state =
         _state.stateIn(
@@ -31,24 +33,28 @@ open class CreateQuizViewModel : KoinComponent, KMMViewModel() {
         )
 
     fun createQuiz(createQuizRequest: CreateQuizRequest) {
-        if (creatingQuizJob == null) {
-            creatingQuizJob = viewModelScope.coroutineScope.launch {
-                createQuizUseCase.run(createQuizRequest).map {
-                    when (it) {
-                        is FlowResult.Success -> {
-                            _state.value = CreateQuizScreenState.Success(it.data)
-                        }
+        if (creatingQuizJob != null) {
+            creatingQuizJob?.cancel()
+        }
+        creatingQuizJob = viewModelScope.coroutineScope.launch {
 
-                        is FlowResult.Error -> {
-                            _state.value = CreateQuizScreenState.Error(it.exception)
-                        }
-
-                        FlowResult.Loading -> {
-                            _state.value = CreateQuizScreenState.Loading
-                        }
+            createQuizUseCase.run(createQuizRequest).map {
+                when (it) {
+                    is FlowResult.Success -> {
+                        _state.value = CreateQuizScreenState.Success(it.data)
                     }
-                }.collectLatest { }
-            }
+
+                    is FlowResult.Error -> {
+                        _state.value = CreateQuizScreenState.Error(it.exception)
+                    }
+
+                    FlowResult.Loading -> {
+                        _state.value = CreateQuizScreenState.Loading
+                    }
+                }
+
+            }.collectLatest { }
+
         }
     }
 
