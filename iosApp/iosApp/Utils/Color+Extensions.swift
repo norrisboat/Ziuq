@@ -14,6 +14,7 @@ extension Color {
 	static let primaryGreen = Color("PrimaryGreen")
     static let lightYellow = Color("LightYellow")
     static let label = Color(UIColor.label)
+    static let systemBackgroundColor = Color(UIColor.systemBackground)
 
 	
 }

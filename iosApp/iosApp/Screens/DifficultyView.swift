@@ -29,15 +29,18 @@ struct DifficultyView: View {
                         ProgressView()
                     }
                     .fillMaxSize()
-                case .success(let categories):
+                case .success(let difficulties):
                     ScrollView {
                         GeometryReader { proxy in
                             LazyVGrid(columns: twoColumnGrid) {
-                                ForEach((categories), id: \.key) { difficulty in
+                                ForEach((difficulties), id: \.key) { difficulty in
                                     DifficultyItemView(quizDifficulty: difficulty)
                                         .frame(width: proxy.size.width / 2 - 8)
                                         .frame(minHeight: 220)
                                         .padding(.bottom)
+                                        .makeButton {
+                                            path.append(.setupQuiz(categoryName, categoryKey, difficulty))
+                                        }
                                 }
                             }
                         }

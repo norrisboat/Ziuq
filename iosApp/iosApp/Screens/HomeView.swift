@@ -55,8 +55,15 @@ struct HomeView: View {
                             switch path {
                             case .difficulty(let category):
                                 DifficultyView(path: $path, categoryName: category.name, categoryKey: category.key)
-                            case .setupQuiz(let difficulty):
-                                EmptyView()
+                            case .setupQuiz(let categoryName, let categoryKey, let difficulty):
+                                CreatingQuizView(path: $path, categoryName: categoryName, categoryKey: categoryKey, difficulty: difficulty.name)
+                            case .showQuiz(let category, let quizUI):
+                                QuizView(path: $path, category: category, quizUI: quizUI)
+                                    .onFirstAppear {
+//                                        self.path = []
+                                    }
+                            case .showQuizCompleted:
+                                QuizCompleteView(path: $path)
                             }
                         }
                     case .error(let errorMessage):
@@ -84,7 +91,9 @@ enum HomeViewState {
 
 enum NavPath: Hashable {
     case difficulty(QuizCategory)
-    case setupQuiz(QuizDifficulty)
+    case setupQuiz(String, String, QuizDifficulty)
+    case showQuiz(String, QuizUI)
+    case showQuizCompleted
 }
 
 extension HomeView {

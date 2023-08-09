@@ -15,6 +15,11 @@
 		F60D7E612A7B07D80063A145 /* KMMViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = F60D7E602A7B07D80063A145 /* KMMViewModelCore */; };
 		F60D7E632A7B07D80063A145 /* KMMViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F60D7E622A7B07D80063A145 /* KMMViewModelSwiftUI */; };
 		F60D7E652A7B08060063A145 /* KMMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60D7E642A7B08060063A145 /* KMMViewModel.swift */; };
+		F66B0E0D2A811A69008ABA9D /* CreatingQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E0C2A811A69008ABA9D /* CreatingQuizView.swift */; };
+		F66B0E0F2A81213F008ABA9D /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E0E2A81213F008ABA9D /* QuizView.swift */; };
+		F66B0E112A812FCB008ABA9D /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E102A812FCB008ABA9D /* CapsuleButton.swift */; };
+		F66B0E132A8134C5008ABA9D /* QuizOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E122A8134C5008ABA9D /* QuizOptionsView.swift */; };
+		F66B0E152A813D34008ABA9D /* QuizQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E142A813D34008ABA9D /* QuizQuestionView.swift */; };
 		F67AA8702A7C43A0007E04C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AA86F2A7C43A0007E04C8 /* HomeView.swift */; };
 		F67AA8732A7C44FE007E04C8 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AA8722A7C44FE007E04C8 /* SessionViewModel.swift */; };
 		F67AA8752A7C836B007E04C8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AA8742A7C836B007E04C8 /* CategoryView.swift */; };
@@ -26,6 +31,9 @@
 		F6BC17092A79CCE700B9DA60 /* ZiuqText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC17082A79CCE700B9DA60 /* ZiuqText.swift */; };
 		F6BC170B2A79CE5800B9DA60 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC170A2A79CE5800B9DA60 /* Font+Extensions.swift */; };
 		F6BC170D2A79DA3100B9DA60 /* ZiuqTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC170C2A79DA3100B9DA60 /* ZiuqTextField.swift */; };
+		F6F129182A83BEBF00C4ECCD /* VerticalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F129172A83BEBF00C4ECCD /* VerticalProgressView.swift */; };
+		F6F1291A2A83C57300C4ECCD /* QuizScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F129192A83C57300C4ECCD /* QuizScoreView.swift */; };
+		F6F1291C2A83E94000C4ECCD /* QuizCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1291B2A83E94000C4ECCD /* QuizCompleteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +58,11 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F60D7E5D2A7AC3370063A145 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		F60D7E642A7B08060063A145 /* KMMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMMViewModel.swift; sourceTree = "<group>"; };
+		F66B0E0C2A811A69008ABA9D /* CreatingQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingQuizView.swift; sourceTree = "<group>"; };
+		F66B0E0E2A81213F008ABA9D /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		F66B0E102A812FCB008ABA9D /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
+		F66B0E122A8134C5008ABA9D /* QuizOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionsView.swift; sourceTree = "<group>"; };
+		F66B0E142A813D34008ABA9D /* QuizQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionView.swift; sourceTree = "<group>"; };
 		F67AA86F2A7C43A0007E04C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F67AA8722A7C44FE007E04C8 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
 		F67AA8742A7C836B007E04C8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -61,6 +74,9 @@
 		F6BC17082A79CCE700B9DA60 /* ZiuqText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZiuqText.swift; sourceTree = "<group>"; };
 		F6BC170A2A79CE5800B9DA60 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		F6BC170C2A79DA3100B9DA60 /* ZiuqTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZiuqTextField.swift; sourceTree = "<group>"; };
+		F6F129172A83BEBF00C4ECCD /* VerticalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
+		F6F129192A83C57300C4ECCD /* QuizScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScoreView.swift; sourceTree = "<group>"; };
+		F6F1291B2A83E94000C4ECCD /* QuizCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCompleteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +146,9 @@
 				F6BC17002A79BEFC00B9DA60 /* LoginView.swift */,
 				F67AA86F2A7C43A0007E04C8 /* HomeView.swift */,
 				F68147F72A7ED83400D80D2F /* DifficultyView.swift */,
+				F66B0E0C2A811A69008ABA9D /* CreatingQuizView.swift */,
+				F66B0E0E2A81213F008ABA9D /* QuizView.swift */,
+				F6F1291B2A83E94000C4ECCD /* QuizCompleteView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -156,11 +175,16 @@
 		F6BC17072A79CCB000B9DA60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F66B0E122A8134C5008ABA9D /* QuizOptionsView.swift */,
 				F6BC17082A79CCE700B9DA60 /* ZiuqText.swift */,
 				F6BC170C2A79DA3100B9DA60 /* ZiuqTextField.swift */,
 				F60D7E5D2A7AC3370063A145 /* PrimaryButton.swift */,
 				F67AA8742A7C836B007E04C8 /* CategoryView.swift */,
 				F68147F52A7ED5E600D80D2F /* DifficultyItemView.swift */,
+				F66B0E102A812FCB008ABA9D /* CapsuleButton.swift */,
+				F66B0E142A813D34008ABA9D /* QuizQuestionView.swift */,
+				F6F129172A83BEBF00C4ECCD /* VerticalProgressView.swift */,
+				F6F129192A83C57300C4ECCD /* QuizScoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,19 +289,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				F68147F82A7ED83400D80D2F /* DifficultyView.swift in Sources */,
+				F66B0E112A812FCB008ABA9D /* CapsuleButton.swift in Sources */,
 				F60D7E5E2A7AC3370063A145 /* PrimaryButton.swift in Sources */,
+				F6F1291C2A83E94000C4ECCD /* QuizCompleteView.swift in Sources */,
+				F66B0E0D2A811A69008ABA9D /* CreatingQuizView.swift in Sources */,
 				F67AA8732A7C44FE007E04C8 /* SessionViewModel.swift in Sources */,
+				F66B0E152A813D34008ABA9D /* QuizQuestionView.swift in Sources */,
 				F6BC170D2A79DA3100B9DA60 /* ZiuqTextField.swift in Sources */,
 				F6BC17012A79BEFC00B9DA60 /* LoginView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				F68147F62A7ED5E600D80D2F /* DifficultyItemView.swift in Sources */,
 				F67AA8752A7C836B007E04C8 /* CategoryView.swift in Sources */,
+				F66B0E132A8134C5008ABA9D /* QuizOptionsView.swift in Sources */,
+				F6F1291A2A83C57300C4ECCD /* QuizScoreView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				F67AA8702A7C43A0007E04C8 /* HomeView.swift in Sources */,
 				F6BC170B2A79CE5800B9DA60 /* Font+Extensions.swift in Sources */,
+				F6F129182A83BEBF00C4ECCD /* VerticalProgressView.swift in Sources */,
 				F6BC17062A79CAE400B9DA60 /* View+Extensions.swift in Sources */,
 				F6BC17042A79CA9200B9DA60 /* Color+Extensions.swift in Sources */,
 				F60D7E652A7B08060063A145 /* KMMViewModel.swift in Sources */,
+				F66B0E0F2A81213F008ABA9D /* QuizView.swift in Sources */,
 				F6BC17092A79CCE700B9DA60 /* ZiuqText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

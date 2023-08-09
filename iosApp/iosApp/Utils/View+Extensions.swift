@@ -11,17 +11,25 @@ import SwiftUI
 import shared
 
 extension View {
-	
-	func fillMaxSize(alignment: Alignment = .center) -> some View {
-		self.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
-	}
+    
+    func fillMaxSize(alignment: Alignment = .center) -> some View {
+        self.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
+    }
     
     func fillWidth(alignment: Alignment = .center) -> some View {
         self.frame(maxWidth: .infinity, alignment: alignment)
     }
     
+    func fillHeight(alignment: Alignment = .center) -> some View {
+        self.frame(maxHeight: .infinity, alignment: alignment)
+    }
+    
     func size(of size: CGFloat, alignment: Alignment = .center) -> some View {
         self.frame(width: size, height: size, alignment: alignment)
+    }
+    
+    func topAndDownPadding(padding: CGFloat = 20.0) -> some View {
+        self.padding(.top, padding).padding(.bottom, padding)
     }
     
     func sidePadding(padding: CGFloat = 20.0) -> some View {
@@ -67,11 +75,29 @@ extension View {
             self
         }
     }
-	
+    
+    func onFirstAppear(_ action: @escaping () -> ()) -> some View {
+        modifier(FirstAppear(action: action))
+    }
+    
 }
 
 extension Image {
     init(resource: ResourcesImageResource) {
         self.init(uiImage: resource.toUIImage()!)
+    }
+}
+
+private struct FirstAppear: ViewModifier {
+    let action: () -> ()
+    
+    @State private var hasAppeared = false
+    
+    func body(content: Content) -> some View {
+        content.onAppear {
+            guard !hasAppeared else { return }
+            hasAppeared = true
+            action()
+        }
     }
 }
