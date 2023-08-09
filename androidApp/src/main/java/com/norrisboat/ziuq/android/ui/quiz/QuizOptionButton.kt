@@ -30,14 +30,6 @@ fun QuizOptionButton(
     onClick: () -> Unit
 ) {
 
-//    LaunchedEffect(isSelected) {
-//        delay(1.5.seconds)
-//        if (isSelected) {
-//            onClick()
-//            isSelected = false
-//        }
-//    }
-
     Button(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(percent = 100),
