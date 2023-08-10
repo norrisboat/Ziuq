@@ -9,6 +9,8 @@
         android:theme="@style/AppTheme"
         android:label="@string/app_name"
         android:name=".ZiuqApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity
