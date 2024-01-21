@@ -13,7 +13,7 @@ Design inspiration by [MindInventory](https://dribbble.com/shots/20511315-Educat
 
 ## 📦 Screenshots
 ### Live Quiz Demo
-![Demo](media/ziuq-live-quiz-demo.mov)
+![Demo](https://github.com/norrisboat/Ziuq/blob/main/media/ziuq-live-quiz-demo.gif)
 
 ### Android
 <img src="media/android-main.png"  width="250"/> <img src="media/android-type.png"  width="250"/> <img src="media/android-quiz.png" width="250"/>
