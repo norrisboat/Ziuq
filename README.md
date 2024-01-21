@@ -1,6 +1,6 @@
 # Ziuq
 
-Yes, Ziuq is Quiz spelled backward 😀. This is a quiz app built using [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) that runs on both Android and iOS platforms. It's a sample project to show the power of KMP. This project shares everything except UI. It runs with the [server side project](https://kotlinlang.org/docs/multiplatform.html) also written in Kotlin with [Ktor](https://ktor.io).
+Yes, Ziuq is Quiz spelled backward 😀. This is a quiz app built using [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) that runs on both Android and iOS platforms. It's a sample project to show the power of KMP. This project shares everything except UI. It runs with the [server side project](https://github.com/norrisboat/ZiuqServer) also written in Kotlin with [Ktor](https://ktor.io).
 
 Design inspiration by [MindInventory](https://dribbble.com/shots/20511315-Educational-Quiz-App)
 
