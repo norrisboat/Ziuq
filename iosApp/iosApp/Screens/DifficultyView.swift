@@ -39,7 +39,7 @@ struct DifficultyView: View {
                                         .frame(minHeight: 220)
                                         .padding(.bottom)
                                         .makeButton {
-                                            path.append(.setupQuiz(categoryName, categoryKey, difficulty))
+                                            path.append(.chooseQuiz(categoryName, categoryKey, difficulty))
                                         }
                                 }
                             }

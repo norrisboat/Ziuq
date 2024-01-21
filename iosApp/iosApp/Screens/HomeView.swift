@@ -13,18 +13,33 @@ import KMMViewModelSwiftUI
 struct HomeView: View {
     
     @ObservedViewModel var viewModel = HomeViewModel()
+    @ObservedObject var sessionViewModel = SessionViewModel.shared
     private var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     @State private var path: [NavPath] = []
-    
+    @State var showSheet = false
     
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
                 VStack {
-                    ZiuqText(text: Labels().hello.localized(), type: .smallLabel)
-                        .fillWidth(alignment: .leading)
-                    ZiuqText(text: Labels().dearUser.localized(), type: .subTitle)
-                        .fillWidth(alignment: .leading)
+                    HStack {
+                        VStack {
+                            
+                            ZiuqText(text: Labels().hello.localized(), type: .subTitle)
+                                .fillWidth(alignment: .leading)
+                            ZiuqText(text: viewModel.getUsername(), type: .title)
+                                .fillWidth(alignment: .leading)
+                        }
+                        Spacer()
+                        Image(resource: Images().menu)
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.deepGreen)
+                            .size(of: 24)
+                            .makeButton {
+                                showSheet = true
+                            }
+                    }
                     
                     switch getState(screenState: viewModel.state) {
                     case .idle:
@@ -35,8 +50,8 @@ struct HomeView: View {
                         }
                         .fillMaxSize()
                     case .success(let categories):
-                        ScrollView {
-                            GeometryReader { proxy in
+                        GeometryReader { proxy in
+                            ScrollView(showsIndicators: false) {
                                 LazyVGrid(columns: twoColumnGrid) {
                                     ForEach((categories), id: \.key) { category in
                                         CategoryView(quizCategory: category)
@@ -51,32 +66,58 @@ struct HomeView: View {
                             }
                         }
                         .fillMaxSize()
-                        .navigationDestination(for: NavPath.self) { path in
-                            switch path {
-                            case .difficulty(let category):
-                                DifficultyView(path: $path, categoryName: category.name, categoryKey: category.key)
-                            case .setupQuiz(let categoryName, let categoryKey, let difficulty):
-                                CreatingQuizView(path: $path, categoryName: categoryName, categoryKey: categoryKey, difficulty: difficulty.name)
-                            case .showQuiz(let category, let quizUI):
-                                QuizView(path: $path, category: category, quizUI: quizUI)
-                                    .onFirstAppear {
-//                                        self.path = []
-                                    }
-                            case .showQuizCompleted:
-                                QuizCompleteView(path: $path)
-                            }
-                        }
                     case .error(let errorMessage):
                         ZiuqText(text: errorMessage, type: .label, color: .deepGreen)
                     }
                 }
                 .padding(.top, 36)
-                .padding(.leading, 16)
+                .padding(.horizontal, 8)
             }
             .padding()
             .fillMaxSize(alignment: .top)
             .background(Color.primaryGreen)
             .ignoresSafeArea()
+            .navigationDestination(for: NavPath.self) { path in
+                switch path {
+                case .difficulty(let category):
+                    DifficultyView(path: $path, categoryName: category.name, categoryKey: category.key)
+                case .setupQuiz(let categoryName, let categoryKey, let difficulty):
+                    CreatingQuizView(path: $path, categoryName: categoryName, categoryKey: categoryKey, difficulty: difficulty.name)
+                case .showQuiz(let category, let quizUI):
+                    QuizView(path: $path, category: category, quizUI: quizUI)
+                case .showQuizCompleted(let quizResult):
+                    QuizCompleteView(path: $path, quizResult: quizResult)
+                case .chooseQuiz(let categoryName, let categoryKey, let difficulty):
+                    QuizTypeView(path: $path, categoryName: categoryName, categoryKey: categoryKey, difficulty: difficulty)
+                case .liveQuiz(let categoryName, let categoryKey, let difficulty):
+                    LiveQuizView(path: $path, categoryName: categoryName, categoryKey: categoryKey, difficulty: difficulty)
+                }
+            }
+            .sheet(isPresented: $showSheet) {
+                VStack {
+                    ZiuqText(text: Labels().more.localized(), type: .heading, color: .deepGreen)
+                        .fillWidth(alignment: .leading)
+                        .padding()
+                    PrimaryButton(title: Labels().joinQuiz.localized()) {
+                        withAnimation {
+                            showSheet = false
+                        }
+                        path.append(.liveQuiz("", "", QuizDifficulty.companion.sample))
+                    }
+                    CapsuleButton(title: Labels().logout.localized()) {
+                        withAnimation {
+                            showSheet = false
+                            sessionViewModel.logout()
+                        }
+                    }
+                    .padding(.bottom)
+                    .padding(.horizontal)
+                }
+                .fillWidth(alignment: .center)
+                .frame(height: 250)
+                .background(Color.primaryGreen)
+                .presentationDetents([.height(250)])
+            }
         }
         .tint(.label)
     }
@@ -91,9 +132,11 @@ enum HomeViewState {
 
 enum NavPath: Hashable {
     case difficulty(QuizCategory)
+    case chooseQuiz(String, String, QuizDifficulty)
     case setupQuiz(String, String, QuizDifficulty)
+    case liveQuiz(String, String, QuizDifficulty)
     case showQuiz(String, QuizUI)
-    case showQuizCompleted
+    case showQuizCompleted(QuizResult)
 }
 
 extension HomeView {

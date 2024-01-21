@@ -25,12 +25,10 @@ import com.norrisboat.ziuq.android.theme.GreenPrimary
 import com.norrisboat.ziuq.android.theme.ZiuqTheme
 import com.norrisboat.ziuq.android.ui.components.CenterToolBar
 import com.norrisboat.ziuq.android.ui.components.DifficultyItem
-import com.norrisboat.ziuq.android.ui.destinations.QuizCreatingScreenDestination
+import com.norrisboat.ziuq.android.ui.destinations.QuizTypeScreenDestination
 import com.norrisboat.ziuq.android.utils.DevicePreviews
 import com.norrisboat.ziuq.android.utils.dimen
 import com.norrisboat.ziuq.android.utils.fakeDestination
-import com.norrisboat.ziuq.data.ui.QuizDifficulty
-import com.norrisboat.ziuq.domain.utils.Images
 import com.norrisboat.ziuq.presentation.difficulty.DifficultyScreenState
 import com.norrisboat.ziuq.presentation.difficulty.DifficultyViewModel
 import com.ramcosta.composedestinations.annotation.Destination
@@ -44,64 +42,65 @@ fun DifficultyScreen(navigator: DestinationsNavigator, categoryName: String, cat
     val viewModel = getViewModel<DifficultyViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    val list = listOf(
-        QuizDifficulty("Easy", "easy", Images().easy),
-        QuizDifficulty("Medium", "science", Images().medium),
-        QuizDifficulty("Hard", "science", Images().hard)
-    )
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(GreenPrimary),
-        contentAlignment = Alignment.Center
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+        CenterToolBar(
+            navigator = navigator,
+            backgroundColor = Color.Transparent,
+            title = categoryName
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            CenterToolBar(
-                navigator = navigator,
-                backgroundColor = Color.Transparent,
-                title = categoryName
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
 
-//            val state: DifficultyScreenState = DifficultyScreenState.Success(list)
-            when (state) {
+                when (state) {
 
-                is DifficultyScreenState.Error, is DifficultyScreenState.Idle -> {
-                }
+                    is DifficultyScreenState.Error, is DifficultyScreenState.Idle -> {
+                    }
 
-                is DifficultyScreenState.Loading -> {
-                    CircularProgressIndicator(
-                        Modifier.padding(top = dimen().spacingBig),
-                        strokeCap = StrokeCap.Round
-                    )
-                }
+                    is DifficultyScreenState.Loading -> {
+                        CircularProgressIndicator(
+                            Modifier.padding(top = dimen().spacingBig),
+                            strokeCap = StrokeCap.Round
+                        )
+                    }
 
-                is DifficultyScreenState.Success -> {
-                    LazyVerticalGrid(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .fillMaxHeight(1f)
-                            .padding(dimen().spacingMedium),
-                        columns = GridCells.Fixed(2)
-                    ) {
-                        items((state as DifficultyScreenState.Success).difficulties) { quizDifficulty ->
-                            DifficultyItem(
-                                modifier = Modifier.padding(dimen().spacingSmall),
-                                quizDifficulty = quizDifficulty
-                            ) {
-                                navigator.navigate(
-                                    QuizCreatingScreenDestination(
-                                        categoryName,
-                                        categoryKey,
-                                        it.name
+                    is DifficultyScreenState.Success -> {
+                        LazyVerticalGrid(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .fillMaxHeight(1f)
+                                .padding(dimen().spacingMedium),
+                            columns = GridCells.Fixed(2)
+                        ) {
+                            items((state as DifficultyScreenState.Success).difficulties) { quizDifficulty ->
+                                DifficultyItem(
+                                    modifier = Modifier.padding(dimen().spacingSmall),
+                                    quizDifficulty = quizDifficulty
+                                ) {
+                                    navigator.navigate(
+                                        QuizTypeScreenDestination(
+                                            categoryName,
+                                            categoryKey,
+                                            it.name
+                                        )
                                     )
-                                )
+                                }
                             }
                         }
                     }
                 }
             }
+
         }
 
     }

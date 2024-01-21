@@ -44,6 +44,7 @@ import com.norrisboat.ziuq.android.utils.rememberLifecycleEvent
 import com.norrisboat.ziuq.android.utils.string
 import com.norrisboat.ziuq.data.ui.QuizUI
 import com.norrisboat.ziuq.domain.utils.Labels
+import com.norrisboat.ziuq.domain.utils.toUserImage
 import com.norrisboat.ziuq.presentation.quiz.QuizViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -63,6 +64,8 @@ fun QuizScreen(
     val currentQuestion by viewModel.currentQuestion.collectAsStateWithLifecycle()
     val questionNumber by viewModel.questionNumber.collectAsStateWithLifecycle()
     val score by viewModel.currentScore.collectAsStateWithLifecycle()
+    val opponentScore by viewModel.opponentScore.collectAsStateWithLifecycle()
+    val opponentAnswer by viewModel.opponentAnswer.collectAsStateWithLifecycle()
     val timeLeft by viewModel.timeLeft.collectAsStateWithLifecycle()
 
     val quiz = QuizUI.decode(quizUI)
@@ -76,7 +79,11 @@ fun QuizScreen(
 
     LaunchedEffect(Unit) {
         viewModel.completed.collectLatest {
-            navigator.navigate(QuizCompleteScreenDestination) {
+            navigator.navigate(
+                QuizCompleteScreenDestination(
+                    result = viewModel.quizResult(quiz).encode()
+                )
+            ) {
                 popUpTo(HomeScreenDestination.route) {
                     inclusive = false
                 }
@@ -91,9 +98,9 @@ fun QuizScreen(
     ) {
 
         Row(modifier = Modifier.fillMaxSize()) {
-            VerticalProgress(progress = timeLeft, maxProgress = 30f)
+            VerticalProgress(progress = timeLeft, maxProgress = 15f)
             Spacer(modifier = Modifier.weight(1f))
-            VerticalProgress(progress = timeLeft, maxProgress = 30f)
+            VerticalProgress(progress = timeLeft, maxProgress = 15f)
         }
 
         Column(
@@ -113,9 +120,26 @@ fun QuizScreen(
                         subTitle = Labels().numberQuestion(quiz.questions.count()).string()
                     )
 
-                    QuizScore(
-                        modifier = Modifier.padding(end = dimen().spacingMedium),
-                        score = score
+                    if (!quiz.isLiveQuiz()) {
+                        QuizScore(
+                            modifier = Modifier.padding(end = dimen().spacingMedium),
+                            score = score
+                        )
+                    }
+                }
+
+                if (quiz.isLiveQuiz()) {
+                    LiveScoreView(
+                        modifier = Modifier.padding(
+                            start = dimen().spacingRegular,
+                            end = dimen().spacingRegular
+                        ),
+                        player1ImageURL = quiz.player1?.image?.toUserImage() ?: "",
+                        player1Name = quiz.player1?.name ?: "",
+                        player1Score = score,
+                        player2ImageURL = quiz.player2?.image?.toUserImage() ?: "",
+                        player2Name = quiz.player2?.name ?: "",
+                        player2Score = opponentScore,
                     )
                 }
 
@@ -136,9 +160,16 @@ fun QuizScreen(
                                 end = dimen().spacingMedium
                             ),
                             questionNumber = questionNumber,
-                            question = question
+                            question = question,
+                            opponentAnswer = opponentAnswer,
+                            opponentImage = quiz.player2?.image?.toUserImage() ?: "",
+                            isPlayer1 = quiz.player1?.username == viewModel.getUserId()
                         ) { answer ->
-                            viewModel.nextQuestion(answer)
+                            if (quiz.isLiveQuiz()) {
+                                viewModel.submitAnswer(answer)
+                            } else {
+                                viewModel.nextQuestion(answer)
+                            }
                         }
                     }
                 }
@@ -158,7 +189,11 @@ fun QuizScreen(
                 text = Labels().skip.string(),
                 type = ZiuqButtonType.SecondaryStroke
             ) {
-                viewModel.nextQuestion()
+                if (quiz.isLiveQuiz()) {
+                    viewModel.submitAnswer()
+                } else {
+                    viewModel.nextQuestion()
+                }
             }
         }
 

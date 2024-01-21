@@ -6,7 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.norrisboat.ziuq.android.theme.ZiuqTheme
@@ -40,24 +41,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     AppScaffold(
-                        navController = navController,
-                        startRoute = startRoute,
-                        topBar = { _, _ ->
-//                            if (dest.shouldShowScaffoldElements) {
-//                                CenterToolBar(
-//                                    destination = dest,
-//                                    navBackStackEntry = backStackEntry,
-//                                    navController = navController,
-//                                    showBackIcon = dest.showBackButton,
-//                                    showSettings = dest.showSettings
-//                                )
-//                            }
-                        },
-                        bottomBar = {
-//                            if (it.shouldShowScaffoldElements) {
-//                                BottomBar(navController)
-//                            }
-                        }
+                        navController = navController
                     ) {
 
                         DestinationsNavHost(

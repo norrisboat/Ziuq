@@ -20,7 +20,7 @@ fun QuizScore(
     modifier: Modifier = Modifier,
     backgroundColor: Color = MaterialTheme.colors.background,
     borderColor: Color = Color.LightGray,
-    score: Int
+    score: Int,
 ) {
 
     Box(
@@ -31,7 +31,7 @@ fun QuizScore(
             .border(0.5.dp, borderColor, shape = CircleShape),
         contentAlignment = Alignment.Center
     ) {
-        ScoreCounter(score = score)
+        ScoreCounter(score = score.toString())
     }
 
 }

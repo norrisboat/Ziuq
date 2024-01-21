@@ -30,3 +30,15 @@ fun QuestionResult.toQuizQuestion(): QuizQuestion {
             ?: emptyList()) + (questionResults?.correctAnswer ?: "")).shuffled().subList(0, 4)
     )
 }
+
+fun QuestionResults.toQuizQuestion(): QuizQuestion {
+    return QuizQuestion(
+        id = id ?: "",
+        question = question?.text ?: "",
+        correctAnswer = correctAnswer ?: "",
+        type = type ?: "",
+        incorrectAnswers = incorrectAnswers ?: emptyList(),
+        options = ((incorrectAnswers
+            ?: emptyList()) + (correctAnswer ?: "")).shuffled().subList(0, 4)
+    )
+}

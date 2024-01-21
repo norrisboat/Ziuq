@@ -6,6 +6,8 @@ import com.norrisboat.ziuq.data.remote.service.QuizService
 import com.norrisboat.ziuq.data.remote.service.QuizServiceImpl
 import com.norrisboat.ziuq.data.repository.AuthRepository
 import com.norrisboat.ziuq.data.repository.AuthRepositoryImpl
+import com.norrisboat.ziuq.data.repository.LiveQuizRepository
+import com.norrisboat.ziuq.data.repository.LiveQuizRepositoryImpl
 import com.norrisboat.ziuq.data.repository.QuizDataRepository
 import com.norrisboat.ziuq.data.repository.QuizDataRepositoryImpl
 import com.norrisboat.ziuq.data.repository.QuizRepository
@@ -26,6 +28,7 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.websocket.WebSockets
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.context.startKoin
@@ -53,6 +56,7 @@ val repositoryModule = module {
     single<SettingsRepository> { SettingsRepositoryImpl() }
     single<QuizDataRepository> { QuizDataRepositoryImpl() }
     single<QuizRepository> { QuizRepositoryImpl() }
+    single<LiveQuizRepository> { LiveQuizRepositoryImpl() }
 
     single { Settings() }
 }
@@ -70,21 +74,20 @@ val servicesModule = module {
     single<AuthService> { AuthServiceImpl() }
     single<QuizService> { QuizServiceImpl() }
 
-    single { createClient() }
+    single { json() }
+    single { createClient(get()) }
 }
 
-fun createClient(): HttpClient {
+fun createClient(json: Json): HttpClient {
     return HttpClient(CIO) {
         install(HttpTimeout) {
             requestTimeoutMillis = 50000
         }
         install(ContentNegotiation) {
-            json(Json {
-                prettyPrint = true
-                isLenient = true
-                ignoreUnknownKeys = true
-            })
+            json(json)
         }
+
+        install(WebSockets)
 
         install(Logging) {
             logger = object : Logger {
@@ -95,4 +98,10 @@ fun createClient(): HttpClient {
             level = LogLevel.ALL
         }
     }
+}
+
+fun json() = Json {
+    ignoreUnknownKeys = true
+    prettyPrint = true
+    isLenient = true
 }

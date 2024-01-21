@@ -30,11 +30,13 @@ open class LoginViewModel : KoinComponent, KMMViewModel() {
     var state = _state.stateIn(viewModelScope, WhileViewSubscribed, LoginScreenState.Idle)
 
     fun login(username: String, password: String) {
+        _state.value = LoginScreenState.Loading
         viewModelScope.coroutineScope.launch {
             loginUseCase.run(params = LoginRequest(username, password)).map {
                 when (it) {
                     is FlowResult.Success -> {
                         it.data.id?.let { userId -> settingsRepository.setUserId(userId) }
+                        it.data.username?.let { username -> settingsRepository.setUsername(username) }
                         setup()
                     }
 

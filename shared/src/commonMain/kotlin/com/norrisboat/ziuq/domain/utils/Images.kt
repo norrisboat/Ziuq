@@ -16,4 +16,7 @@ class Images {
     val easy = MR.images.img_easy
     val medium = MR.images.img_medium
     val hard = MR.images.img_difficult
+    val multiplayer = MR.images.img_multiplayer
+    val play = MR.images.img_play
+    val menu = MR.images.img_menu
 }

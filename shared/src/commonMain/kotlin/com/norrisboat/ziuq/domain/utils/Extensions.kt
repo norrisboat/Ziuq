@@ -4,10 +4,17 @@ import com.norrisboat.ziuq.data.remote.result.BaseResult
 import com.norrisboat.ziuq.data.remote.result.NetworkError
 import com.norrisboat.ziuq.domain.utils.Endpoint.makeEndpoint
 import io.ktor.client.HttpClient
-import io.ktor.client.call.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.http.*
+import io.ktor.client.call.body
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.HttpResponse
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
+import io.ktor.http.encodedPath
+import io.ktor.http.isSuccess
+import io.ktor.http.takeFrom
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,7 +22,9 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
-const val baseURL = "http://192.168.0.180:9000/"
+const val base = "LOCALHOST:PORT"
+const val baseURL = "http://$base/"
+const val socketURL = "ws://$base"
 
 fun HttpRequestBuilder.apiUrl(path: String) {
     url {
@@ -55,9 +64,6 @@ inline fun <reified T : Any> BaseResult<T?>.getResults(): Result<T> {
 }
 
 
-/**
- * Creates a MutableSharedFlow with default values to replicate a single event not repeatable
- */
 @Suppress("FunctionName")
 fun <T> SingleEventFlow(): MutableSharedFlow<T> {
     return MutableSharedFlow(
@@ -97,3 +103,5 @@ suspend fun HttpClient.makeGetRequest(
         setBody(request)
     }
 }
+
+fun String.toUserImage() = baseURL + "static/Assets/CryptoFluff_$this.jpg"

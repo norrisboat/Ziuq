@@ -2,9 +2,9 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
     id("com.android.library")
-    id("app.cash.sqldelight") version "2.0.0-alpha05"
-    id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-4"
-    id("com.google.devtools.ksp") version "1.8.0-1.0.8"
+    id("app.cash.sqldelight") version "2.0.1"
+    id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-22"
+    id("com.google.devtools.ksp") version "1.9.21-1.0.16"
     id("dev.icerock.mobile.multiplatform-resources") version "0.23.0"
 }
 
@@ -12,10 +12,10 @@ plugins {
 kotlin {
 //    targetHierarchy.default()
 
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "11"
             }
         }
     }
@@ -31,29 +31,32 @@ kotlin {
     }
 
     sourceSets {
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-                implementation("app.cash.sqldelight:coroutines-extensions:2.0.0-alpha05")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+                implementation("app.cash.sqldelight:coroutines-extensions:2.0.1")
 
-                implementation("io.ktor:ktor-client-core:2.3.2")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.2")
-                implementation("io.ktor:ktor-client-logging:2.3.2")
-                implementation("io.ktor:ktor-client-content-negotiation:2.3.2")
-                implementation("io.ktor:ktor-client-cio:2.3.2")
-                implementation("io.ktor:ktor-client-auth:2.3.2")
+                implementation("io.ktor:ktor-client-core:2.3.7")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
+                implementation("io.ktor:ktor-client-logging:2.3.7")
+                implementation("io.ktor:ktor-client-content-negotiation:2.3.7")
+                implementation("io.ktor:ktor-client-cio:2.3.7")
+                implementation("io.ktor:ktor-client-auth:2.3.7")
+                implementation("io.ktor:ktor-client-websockets:2.3.7")
 
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-
-                implementation("io.insert-koin:koin-core:3.4.0")
-                implementation("io.github.aakira:napier:2.6.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
-                implementation("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-3")
+                implementation("io.insert-koin:koin-core:3.5.3")
+                implementation("io.github.aakira:napier:2.7.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+                api("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-16")
                 implementation("dev.icerock.moko:resources:0.23.0")
 
-                implementation("com.russhwolf:multiplatform-settings:1.0.0")
-                implementation("com.russhwolf:multiplatform-settings-no-arg:1.0.0")
+                implementation("com.russhwolf:multiplatform-settings:1.1.1")
+                implementation("com.russhwolf:multiplatform-settings-no-arg:1.1.1")
 
             }
         }
@@ -64,20 +67,21 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation("junit:junit:4.13.2")
 
-                implementation("io.insert-koin:koin-test:3.4.0")
+                implementation("io.insert-koin:koin-test:3.5.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain)
             dependencies {
-                implementation("io.ktor:ktor-client-okhttp:2.3.2")
-                implementation("app.cash.sqldelight:android-driver:2.0.0-alpha05")
-                implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+                implementation("io.ktor:ktor-client-okhttp:2.3.7")
+                implementation("app.cash.sqldelight:android-driver:2.0.1")
+                implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
             }
         }
         /*val androidTest by getting {
             dependencies {
-                implementation("app.cash.sqldelight:sqlite-driver:2.0.0-alpha05")
+                implementation("app.cash.sqldelight:sqlite-driver:2.0.1")
 
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
@@ -91,8 +95,8 @@ kotlin {
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependencies {
-                implementation("io.ktor:ktor-client-darwin:2.3.2")
-                implementation("app.cash.sqldelight:native-driver:2.0.0-alpha05")
+                implementation("io.ktor:ktor-client-darwin:2.3.7")
+                implementation("app.cash.sqldelight:native-driver:2.0.1")
             }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -146,6 +150,10 @@ android {
         minSdk = 24
     }
     sourceSets.getByName("main").res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 
 }
 

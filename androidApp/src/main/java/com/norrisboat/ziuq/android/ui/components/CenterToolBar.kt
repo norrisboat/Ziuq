@@ -33,7 +33,6 @@ fun CenterToolBar(
     navigator: DestinationsNavigator? = null,
     title: String? = null,
     subTitle: String? = null,
-    showBackIcon: Boolean = true,
     backgroundColor: Color? = null
 ) {
     CenterAlignedTopAppBar(
@@ -46,20 +45,16 @@ fun CenterToolBar(
             )
         },
         navigationIcon = {
-            if (showBackIcon) {
-                IconButton(
-                    onClick = {
-                        if (showBackIcon) {
-                            navController?.navigateUp()
-                            navigator?.navigateUp()
-                        }
-                    }
-                ) {
-                    Icon(
-                        imageVector = Icons.Rounded.ArrowBack,
-                        contentDescription = Labels().backButton.string()
-                    )
+            IconButton(
+                onClick = {
+                    navController?.navigateUp()
+                    navigator?.navigateUp()
                 }
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.ArrowBack,
+                    contentDescription = Labels().backButton.string()
+                )
             }
         },
         title = {

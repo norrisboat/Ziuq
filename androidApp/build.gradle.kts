@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("com.google.devtools.ksp") version "1.8.0-1.0.8"
+    id("com.google.devtools.ksp") version "1.9.21-1.0.16"
 }
 
 android {
@@ -18,7 +18,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.0"
+        kotlinCompilerExtensionVersion = "1.5.7"
     }
 //    packaging {
 //        resources {
@@ -31,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     applicationVariants.all {
         kotlin.sourceSets {
@@ -54,35 +54,34 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.3.3")
-    implementation("androidx.compose.ui:ui-tooling:1.3.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.3.3")
-    implementation("androidx.compose.foundation:foundation:1.3.1")
-    implementation("androidx.compose.material:material:1.3.1")
-    implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0")
+    implementation("androidx.compose.ui:ui:1.5.4")
+    implementation("androidx.compose.ui:ui-tooling:1.5.4")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
+    implementation("androidx.compose.foundation:foundation:1.5.4")
+    implementation("androidx.compose.material:material:1.5.4")
+    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
 
-    implementation("androidx.compose.material:material:1.4.0-beta01")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha06")
-    implementation("androidx.navigation:navigation-compose:2.6.0-alpha05")
-    implementation("com.google.accompanist:accompanist-navigation-material:0.29.0-alpha")
+    implementation("androidx.compose.material:material:1.5.4")
+    implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("com.google.accompanist:accompanist-navigation-material:0.32.0")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.29.0-alpha")
 
-    implementation("io.insert-koin:koin-core:3.4.0")
-    implementation("io.insert-koin:koin-androidx-compose:3.4.4")
+    implementation("io.insert-koin:koin-core:3.5.3")
+    implementation("io.insert-koin:koin-androidx-compose:3.5.3")
 
-    implementation("io.github.raamcosta.compose-destinations:animations-core:1.8.33-beta")
-    ksp("io.github.raamcosta.compose-destinations:ksp:1.8.33-beta")
+    implementation("io.github.raamcosta.compose-destinations:animations-core:1.9.53")
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.9.53")
 
-    implementation("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-3")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-beta01")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
     implementation("dev.icerock.moko:resources-compose:0.23.0")
 
-    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.1")
+    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.6")
 
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation(platform("androidx.compose:compose-bom:2022.10.00"))
     implementation("androidx.compose.ui:ui-graphics")
     androidTestImplementation(platform("androidx.compose:compose-bom:2022.10.00"))

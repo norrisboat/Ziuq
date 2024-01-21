@@ -29,4 +29,9 @@ class SessionViewModel: ObservableObject {
         showHome = show
     }
     
+    func logout() {
+        settingsRepository.logout()
+        isLoggedIn = false
+    }
+    
 }

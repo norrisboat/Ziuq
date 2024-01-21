@@ -12,6 +12,9 @@ struct QuizOptionsView: View {
     
     var options: [String]
     var correctAnswer: String
+    var opponentAnswer: String
+    var opponentImage: String
+    var isPlayer1: Bool
     let action: (String) -> Void
     
     @State var animateResults: Bool = false
@@ -22,24 +25,33 @@ struct QuizOptionsView: View {
     var body: some View {
         VStack(spacing: 16) {
             ForEach(options, id: \.self) { option in
-                CapsuleButton(
-                    title: option,
-                    backgroundColor: backgroundColor(option),
-                    textColor: textColor(option),
-                    borderColor: borderColor(option),
-                    canScale: false
-                ) {
-                    withAnimation(.easeIn) {
-                        selectedOption = option
-                        if (option == correctAnswer) {
-                            correct = option
-                        } else {
-                            wrong = option
-                            correct = correctAnswer
+                ZStack(alignment: isPlayer1 ? .topTrailing : .topLeading) {
+                    CapsuleButton(
+                        title: option,
+                        backgroundColor: backgroundColor(option),
+                        textColor: textColor(option),
+                        borderColor: borderColor(option),
+                        canScale: false
+                    ) {
+                        withAnimation(.easeIn) {
+                            selectedOption = option
+                            if (option == correctAnswer) {
+                                correct = option
+                            } else {
+                                wrong = option
+                                correct = correctAnswer
+                            }
+                            animateResults = true
                         }
-                        animateResults = true
+                        
                     }
                     
+                    if opponentAnswer.isNotBlank && option.lowercased() == opponentAnswer.lowercased() {
+                        if let imageURL = opponentImage.toUrl {
+                            AvatarView(url: imageURL, size: 25)
+                                .offset(y: -8)
+                        }
+                    }
                 }
             }
         }
@@ -93,7 +105,7 @@ extension QuizOptionsView {
 
 struct QuizOptionsView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizOptionsView(options: ["Person", "Object", "Town", "Animal"], correctAnswer: "Person") { answer in
+        QuizOptionsView(options: ["Person", "Object", "Town", "Animal"], correctAnswer: "Person", opponentAnswer: "Person", opponentImage: "http://192.168.0.155:9000/static/Assets/CryptoFluff_0001.jpg", isPlayer1: true) { answer in
             
         }
         .padding()

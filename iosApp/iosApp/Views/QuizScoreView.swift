@@ -10,18 +10,22 @@ import SwiftUI
 
 struct QuizScoreView: View {
     var score: Int
+    var showCircle: Bool = true
+    var textSize: CGFloat = 14
     
     @State private var animatedScore: Int = 0
     
     var body: some View {
         ZStack {
             Text("\(animatedScore)")
-                .font(.spaceGrotesk(size: 14))
+                .font(.spaceGrotesk(size: textSize))
                 .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)).combined(with: .opacity))
                 .id(animatedScore)
-            Circle()
-                .strokeBorder(.gray.opacity(0.5))
-                .size(of: 35)
+            if showCircle {
+                Circle()
+                    .strokeBorder(.gray.opacity(0.5))
+                    .size(of: 35)
+            }
         }
         .onChange(of: score) { currentScore in
             withAnimation {

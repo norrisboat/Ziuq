@@ -20,7 +20,8 @@ fun ZiuqText(
     textAlign: TextAlign = TextAlign.Center,
     type: ZiuqTextType,
     fontWeight: FontWeight? = null,
-    textStyle: TextStyle? = null
+    textStyle: TextStyle? = null,
+    maxLines: Int = Int.MAX_VALUE,
 ) {
     Text(
         modifier = modifier,
@@ -37,7 +38,8 @@ fun ZiuqText(
             ZiuqTextType.Custom -> textStyle ?: MaterialTheme.typography.bodyMedium
         },
         textAlign = textAlign,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
+        maxLines = maxLines
     )
 }
 

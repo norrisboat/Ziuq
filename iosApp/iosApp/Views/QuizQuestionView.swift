@@ -13,6 +13,9 @@ struct QuizQuestionView: View {
     
     var questionNumber: Int
     var quizQuestion: QuizQuestion
+    var opponentAnswer: String
+    var opponentImage: String
+    var isPlayer1: Bool
     let onAnswer: (String) -> Void
     
     var body: some View {
@@ -21,7 +24,7 @@ struct QuizQuestionView: View {
                 ZiuqText(text: Labels().questionNumber(number: Int32(questionNumber)).localized(), type: .custom(.spaceGrotesk, .body, 16))
                 ZiuqText(text: quizQuestion.question, type: .custom(.spaceGrotesk, .title, 18), color: .deepGreen)
                 
-                QuizOptionsView(options: quizQuestion.options, correctAnswer: quizQuestion.correctAnswer) { answer in
+                QuizOptionsView(options: quizQuestion.options, correctAnswer: quizQuestion.correctAnswer, opponentAnswer: opponentAnswer, opponentImage: opponentImage, isPlayer1: isPlayer1) { answer in
                     onAnswer(answer)
                 }
                 .padding(.top, 24)
@@ -38,7 +41,7 @@ struct QuizQuestionView: View {
 
 struct QuizQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizQuestionView(questionNumber: 1, quizQuestion: QuizQuestion.Companion().sample) { ans in }
+        QuizQuestionView(questionNumber: 1, quizQuestion: QuizQuestion.Companion().sample, opponentAnswer: "", opponentImage: "", isPlayer1: true) { ans in }
             .padding()
     }
 }

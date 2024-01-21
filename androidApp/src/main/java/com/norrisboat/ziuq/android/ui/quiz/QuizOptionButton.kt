@@ -27,6 +27,7 @@ fun QuizOptionButton(
     backgroundColor: Color,
     borderColor: Color,
     textColor: Color,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
 
@@ -37,7 +38,7 @@ fun QuizOptionButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = backgroundColor
         ),
-        onClick = { onClick() }
+        onClick = { if (enabled) onClick() },
     ) {
         ZiuqText(
             text = text,

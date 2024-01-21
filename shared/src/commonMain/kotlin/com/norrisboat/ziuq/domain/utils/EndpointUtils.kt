@@ -15,6 +15,8 @@ object Endpoint {
         REGISTER("/v1/auth/register"),
         QUIZ_SETUP("/v1/quiz/setup"),
         CREATE_QUIZ("/v1/quiz/create/%"),
+        CREATE_LIVE_QUIZ("/v1/quiz/live/quiz/create/%"),
+        JOIN_LIVE_QUIZ("/v1/quiz/live/quiz/join/%"),
     }
 
 }

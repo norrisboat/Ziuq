@@ -1,5 +1,6 @@
 package com.norrisboat.ziuq.presentation.home
 
+import com.norrisboat.ziuq.data.repository.SettingsRepository
 import com.norrisboat.ziuq.domain.usecase.GetCategoriesUseCase
 import com.norrisboat.ziuq.domain.usecase.UseCase
 import com.norrisboat.ziuq.domain.utils.FlowResult
@@ -19,6 +20,7 @@ import org.koin.core.component.inject
 open class HomeViewModel : KoinComponent, KMMViewModel() {
 
     private val getCategoriesUseCase: GetCategoriesUseCase by inject()
+    private val settingsRepository: SettingsRepository by inject()
 
     private val _state = MutableStateFlow<HomeScreenState>(viewModelScope, HomeScreenState.Idle)
 
@@ -49,5 +51,7 @@ open class HomeViewModel : KoinComponent, KMMViewModel() {
             }.collectLatest { }
         }
     }
+
+    fun getUsername() = "$${settingsRepository.getUsername()}"
 
 }

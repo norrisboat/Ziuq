@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		F60D7E612A7B07D80063A145 /* KMMViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = F60D7E602A7B07D80063A145 /* KMMViewModelCore */; };
 		F60D7E632A7B07D80063A145 /* KMMViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F60D7E622A7B07D80063A145 /* KMMViewModelSwiftUI */; };
 		F60D7E652A7B08060063A145 /* KMMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60D7E642A7B08060063A145 /* KMMViewModel.swift */; };
+		F634F02C2B56087700254B2B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634F02B2B56087700254B2B /* RegisterView.swift */; };
+		F634F02E2B56949600254B2B /* ScoreTowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634F02D2B56949600254B2B /* ScoreTowerView.swift */; };
 		F66B0E0D2A811A69008ABA9D /* CreatingQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E0C2A811A69008ABA9D /* CreatingQuizView.swift */; };
 		F66B0E0F2A81213F008ABA9D /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E0E2A81213F008ABA9D /* QuizView.swift */; };
 		F66B0E112A812FCB008ABA9D /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66B0E102A812FCB008ABA9D /* CapsuleButton.swift */; };
@@ -25,6 +27,18 @@
 		F67AA8752A7C836B007E04C8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AA8742A7C836B007E04C8 /* CategoryView.swift */; };
 		F68147F62A7ED5E600D80D2F /* DifficultyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68147F52A7ED5E600D80D2F /* DifficultyItemView.swift */; };
 		F68147F82A7ED83400D80D2F /* DifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68147F72A7ED83400D80D2F /* DifficultyView.swift */; };
+		F6AE49212B5418BD00CA992A /* LiveQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE49202B5418BD00CA992A /* LiveQuizView.swift */; };
+		F6AE49232B5429B700CA992A /* LiveQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE49222B5429B700CA992A /* LiveQuizViewModel.swift */; };
+		F6AE49262B542AD200CA992A /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = F6AE49252B542AD200CA992A /* KMPNativeCoroutinesAsync */; };
+		F6AE49282B542AD200CA992A /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = F6AE49272B542AD200CA992A /* KMPNativeCoroutinesCombine */; };
+		F6AE492A2B542AD200CA992A /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = F6AE49292B542AD200CA992A /* KMPNativeCoroutinesCore */; };
+		F6AE492C2B542AD200CA992A /* KMPNativeCoroutinesRxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F6AE492B2B542AD200CA992A /* KMPNativeCoroutinesRxSwift */; };
+		F6AE492E2B542AFB00CA992A /* ViewModelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE492D2B542AFB00CA992A /* ViewModelHelpers.swift */; };
+		F6AE49302B5438D500CA992A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE492F2B5438D500CA992A /* AvatarView.swift */; };
+		F6B971D72B5004890031C2A8 /* QuizTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B971D62B5004890031C2A8 /* QuizTypeView.swift */; };
+		F6B971D92B5005A70031C2A8 /* QuizTypeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B971D82B5005A70031C2A8 /* QuizTypeItemView.swift */; };
+		F6B971DB2B500DB30031C2A8 /* LiveScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B971DA2B500DB30031C2A8 /* LiveScoreView.swift */; };
+		F6B971DD2B50180E0031C2A8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B971DC2B50180E0031C2A8 /* String+Extensions.swift */; };
 		F6BC17012A79BEFC00B9DA60 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC17002A79BEFC00B9DA60 /* LoginView.swift */; };
 		F6BC17042A79CA9200B9DA60 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC17032A79CA9200B9DA60 /* Color+Extensions.swift */; };
 		F6BC17062A79CAE400B9DA60 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC17052A79CAE400B9DA60 /* View+Extensions.swift */; };
@@ -58,6 +72,8 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F60D7E5D2A7AC3370063A145 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		F60D7E642A7B08060063A145 /* KMMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMMViewModel.swift; sourceTree = "<group>"; };
+		F634F02B2B56087700254B2B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		F634F02D2B56949600254B2B /* ScoreTowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTowerView.swift; sourceTree = "<group>"; };
 		F66B0E0C2A811A69008ABA9D /* CreatingQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingQuizView.swift; sourceTree = "<group>"; };
 		F66B0E0E2A81213F008ABA9D /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		F66B0E102A812FCB008ABA9D /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
@@ -68,6 +84,14 @@
 		F67AA8742A7C836B007E04C8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		F68147F52A7ED5E600D80D2F /* DifficultyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyItemView.swift; sourceTree = "<group>"; };
 		F68147F72A7ED83400D80D2F /* DifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyView.swift; sourceTree = "<group>"; };
+		F6AE49202B5418BD00CA992A /* LiveQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveQuizView.swift; sourceTree = "<group>"; };
+		F6AE49222B5429B700CA992A /* LiveQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveQuizViewModel.swift; sourceTree = "<group>"; };
+		F6AE492D2B542AFB00CA992A /* ViewModelHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelHelpers.swift; sourceTree = "<group>"; };
+		F6AE492F2B5438D500CA992A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		F6B971D62B5004890031C2A8 /* QuizTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTypeView.swift; sourceTree = "<group>"; };
+		F6B971D82B5005A70031C2A8 /* QuizTypeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTypeItemView.swift; sourceTree = "<group>"; };
+		F6B971DA2B500DB30031C2A8 /* LiveScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveScoreView.swift; sourceTree = "<group>"; };
+		F6B971DC2B50180E0031C2A8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		F6BC17002A79BEFC00B9DA60 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F6BC17032A79CA9200B9DA60 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		F6BC17052A79CAE400B9DA60 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -85,7 +109,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F60D7E612A7B07D80063A145 /* KMMViewModelCore in Frameworks */,
+				F6AE492A2B542AD200CA992A /* KMPNativeCoroutinesCore in Frameworks */,
+				F6AE49282B542AD200CA992A /* KMPNativeCoroutinesCombine in Frameworks */,
+				F6AE492C2B542AD200CA992A /* KMPNativeCoroutinesRxSwift in Frameworks */,
 				F60D7E632A7B07D80063A145 /* KMMViewModelSwiftUI in Frameworks */,
+				F6AE49262B542AD200CA992A /* KMPNativeCoroutinesAsync in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +177,9 @@
 				F66B0E0C2A811A69008ABA9D /* CreatingQuizView.swift */,
 				F66B0E0E2A81213F008ABA9D /* QuizView.swift */,
 				F6F1291B2A83E94000C4ECCD /* QuizCompleteView.swift */,
+				F6B971D62B5004890031C2A8 /* QuizTypeView.swift */,
+				F6AE49202B5418BD00CA992A /* LiveQuizView.swift */,
+				F634F02B2B56087700254B2B /* RegisterView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -157,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				F67AA8722A7C44FE007E04C8 /* SessionViewModel.swift */,
+				F6AE49222B5429B700CA992A /* LiveQuizViewModel.swift */,
+				F6AE492D2B542AFB00CA992A /* ViewModelHelpers.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -168,6 +201,7 @@
 				F6BC17052A79CAE400B9DA60 /* View+Extensions.swift */,
 				F6BC170A2A79CE5800B9DA60 /* Font+Extensions.swift */,
 				F60D7E642A7B08060063A145 /* KMMViewModel.swift */,
+				F6B971DC2B50180E0031C2A8 /* String+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -185,6 +219,10 @@
 				F66B0E142A813D34008ABA9D /* QuizQuestionView.swift */,
 				F6F129172A83BEBF00C4ECCD /* VerticalProgressView.swift */,
 				F6F129192A83C57300C4ECCD /* QuizScoreView.swift */,
+				F6B971D82B5005A70031C2A8 /* QuizTypeItemView.swift */,
+				F6B971DA2B500DB30031C2A8 /* LiveScoreView.swift */,
+				F6AE492F2B5438D500CA992A /* AvatarView.swift */,
+				F634F02D2B56949600254B2B /* ScoreTowerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +248,10 @@
 			packageProductDependencies = (
 				F60D7E602A7B07D80063A145 /* KMMViewModelCore */,
 				F60D7E622A7B07D80063A145 /* KMMViewModelSwiftUI */,
+				F6AE49252B542AD200CA992A /* KMPNativeCoroutinesAsync */,
+				F6AE49272B542AD200CA992A /* KMPNativeCoroutinesCombine */,
+				F6AE49292B542AD200CA992A /* KMPNativeCoroutinesCore */,
+				F6AE492B2B542AD200CA992A /* KMPNativeCoroutinesRxSwift */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
@@ -241,6 +283,7 @@
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
 				F60D7E5F2A7B07D80063A145 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */,
+				F6AE49242B542AD200CA992A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -288,25 +331,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6AE492E2B542AFB00CA992A /* ViewModelHelpers.swift in Sources */,
 				F68147F82A7ED83400D80D2F /* DifficultyView.swift in Sources */,
 				F66B0E112A812FCB008ABA9D /* CapsuleButton.swift in Sources */,
+				F6B971D92B5005A70031C2A8 /* QuizTypeItemView.swift in Sources */,
 				F60D7E5E2A7AC3370063A145 /* PrimaryButton.swift in Sources */,
 				F6F1291C2A83E94000C4ECCD /* QuizCompleteView.swift in Sources */,
 				F66B0E0D2A811A69008ABA9D /* CreatingQuizView.swift in Sources */,
+				F6AE49232B5429B700CA992A /* LiveQuizViewModel.swift in Sources */,
 				F67AA8732A7C44FE007E04C8 /* SessionViewModel.swift in Sources */,
+				F634F02E2B56949600254B2B /* ScoreTowerView.swift in Sources */,
 				F66B0E152A813D34008ABA9D /* QuizQuestionView.swift in Sources */,
 				F6BC170D2A79DA3100B9DA60 /* ZiuqTextField.swift in Sources */,
 				F6BC17012A79BEFC00B9DA60 /* LoginView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				F634F02C2B56087700254B2B /* RegisterView.swift in Sources */,
 				F68147F62A7ED5E600D80D2F /* DifficultyItemView.swift in Sources */,
 				F67AA8752A7C836B007E04C8 /* CategoryView.swift in Sources */,
+				F6B971DD2B50180E0031C2A8 /* String+Extensions.swift in Sources */,
 				F66B0E132A8134C5008ABA9D /* QuizOptionsView.swift in Sources */,
 				F6F1291A2A83C57300C4ECCD /* QuizScoreView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				F6AE49302B5438D500CA992A /* AvatarView.swift in Sources */,
+				F6AE49212B5418BD00CA992A /* LiveQuizView.swift in Sources */,
 				F67AA8702A7C43A0007E04C8 /* HomeView.swift in Sources */,
 				F6BC170B2A79CE5800B9DA60 /* Font+Extensions.swift in Sources */,
 				F6F129182A83BEBF00C4ECCD /* VerticalProgressView.swift in Sources */,
+				F6B971DB2B500DB30031C2A8 /* LiveScoreView.swift in Sources */,
 				F6BC17062A79CAE400B9DA60 /* View+Extensions.swift in Sources */,
+				F6B971D72B5004890031C2A8 /* QuizTypeView.swift in Sources */,
 				F6BC17042A79CA9200B9DA60 /* Color+Extensions.swift in Sources */,
 				F60D7E652A7B08060063A145 /* KMMViewModel.swift in Sources */,
 				F66B0E0F2A81213F008ABA9D /* QuizView.swift in Sources */,
@@ -439,6 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_TEAM = FYFNZPZ3WW;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -468,6 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_TEAM = FYFNZPZ3WW;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -523,6 +578,14 @@
 				kind = branch;
 			};
 		};
+		F6AE49242B542AD200CA992A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -535,6 +598,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F60D7E5F2A7B07D80063A145 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
 			productName = KMMViewModelSwiftUI;
+		};
+		F6AE49252B542AD200CA992A /* KMPNativeCoroutinesAsync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6AE49242B542AD200CA992A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesAsync;
+		};
+		F6AE49272B542AD200CA992A /* KMPNativeCoroutinesCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6AE49242B542AD200CA992A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesCombine;
+		};
+		F6AE49292B542AD200CA992A /* KMPNativeCoroutinesCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6AE49242B542AD200CA992A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesCore;
+		};
+		F6AE492B2B542AD200CA992A /* KMPNativeCoroutinesRxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6AE49242B542AD200CA992A /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesRxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -36,6 +36,13 @@ extension View {
         self.padding(.leading, padding).padding(.trailing, padding)
     }
     
+    func makeCard(backgroundColor: Color = Color.systemBackgroundColor,  radius: CGFloat = 1, strokeColor: Color = .clear) -> some View {
+        self.background {
+            RoundedRectangle(cornerRadius: 16).fill(backgroundColor)
+                .shadow(color: Color.label.opacity(0.4), radius: radius)
+        }
+    }
+    
     func showAllPreviewTypes(previewLayout: PreviewLayout = .sizeThatFits) -> some View {
         ForEach(ColorScheme.allCases, id: \.self) {
             self.preferredColorScheme($0).previewLayout(previewLayout)
@@ -78,6 +85,12 @@ extension View {
     
     func onFirstAppear(_ action: @escaping () -> ()) -> some View {
         modifier(FirstAppear(action: action))
+    }
+    
+    func wait(for seconds: CGFloat = 0.5,  action: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            action()
+        }
     }
     
 }

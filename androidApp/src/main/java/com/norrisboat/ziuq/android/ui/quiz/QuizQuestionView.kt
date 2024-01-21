@@ -34,9 +34,11 @@ fun QuizQuestionView(
     modifier: Modifier = Modifier,
     questionNumber: Int,
     question: QuizQuestion,
+    opponentAnswer: String = "",
+    opponentImage: String = "",
+    isPlayer1: Boolean = true,
     onAnswer: (String) -> Unit
 ) {
-
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -83,7 +85,10 @@ fun QuizQuestionView(
         QuizOptionsView(
             modifier = modifier,
             options = question.options,
-            correctAnswer = question.correctAnswer
+            correctAnswer = question.correctAnswer,
+            opponentAnswer = opponentAnswer,
+            opponentImage = opponentImage,
+            isPlayer1 = isPlayer1,
         ) { answer ->
             onAnswer(answer)
         }

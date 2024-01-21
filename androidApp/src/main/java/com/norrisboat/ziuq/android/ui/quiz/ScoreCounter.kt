@@ -1,8 +1,17 @@
 package com.norrisboat.ziuq.android.ui.quiz
 
-import androidx.compose.animation.*
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.with
 import androidx.compose.foundation.layout.Row
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.norrisboat.ziuq.android.theme.ZiuqTheme
@@ -12,7 +21,7 @@ import com.norrisboat.ziuq.android.ui.components.ZiuqTextType
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun ScoreCounter(
-    score: Int,
+    score: String,
     modifier: Modifier = Modifier,
     style: ZiuqTextType = ZiuqTextType.Label
 ) {
@@ -23,15 +32,14 @@ fun ScoreCounter(
         oldScore = score
     }
     Row(modifier = modifier) {
-        val countString = score.toString()
-        val oldCountString = oldScore.toString()
-        for (i in countString.indices) {
+        val oldCountString = oldScore
+        for (i in score.indices) {
             val oldChar = oldCountString.getOrNull(i)
-            val newChar = countString[i]
+            val newChar = score[i]
             val char = if (oldChar == newChar) {
                 oldCountString[i]
             } else {
-                countString[i]
+                score[i]
             }
             AnimatedContent(
                 targetState = char,
@@ -50,7 +58,7 @@ fun ScoreCounter(
 fun ScoreCounterPreview() {
     ZiuqTheme {
         ScoreCounter(
-            score = 0
+            score = 0.toString()
         )
     }
 }

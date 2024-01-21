@@ -78,7 +78,6 @@ fun LoginScreen(navigator: DestinationsNavigator) {
             .imePadding(),
         contentAlignment = Alignment.Center
     ) {
-//        val state: LoginScreenState = LoginScreenState.Idle
         when (state) {
             is LoginScreenState.Idle, is LoginScreenState.Error -> {
                 if (state is LoginScreenState.Error) {
@@ -92,7 +91,9 @@ fun LoginScreen(navigator: DestinationsNavigator) {
                                 end = ZiuqTheme.dimens.spacingRegular,
                                 top = ZiuqTheme.dimens.spacingBig
                             )
-                            .clickable { viewModel.openRegister() },
+                            .clickable {
+                                navigator.navigate(RegisterScreenDestination)
+                            },
                         textAlign = TextAlign.End,
                         text = Labels().noAccountRegister.string(),
                         type = ZiuqTextType.Title,

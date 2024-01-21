@@ -14,8 +14,13 @@ interface SettingsRepository {
     fun getUserId(): String
     fun setUserId(id: String)
 
+    fun getUsername(): String
+    fun setUsername(username: String)
+
     fun getDifficulties(): List<QuizDifficulty>
     fun setDifficulties(difficulties: String)
+
+    fun logout()
 
 }
 
@@ -39,6 +44,14 @@ class SettingsRepositoryImpl : KoinComponent, SettingsRepository {
         settings.putString(SettingsKey.UserId.name, id)
     }
 
+    override fun getUsername(): String {
+        return settings.getString(SettingsKey.Username.name, "")
+    }
+
+    override fun setUsername(username: String) {
+        settings.putString(SettingsKey.Username.name, username)
+    }
+
     override fun getDifficulties(): List<QuizDifficulty> {
         return settings.getString(SettingsKey.Difficulty.name, "").split(",")
             .map { it.trim().toQuizCategory() }
@@ -48,6 +61,10 @@ class SettingsRepositoryImpl : KoinComponent, SettingsRepository {
         settings.putString(SettingsKey.Difficulty.name, difficulties)
     }
 
+    override fun logout() {
+        settings.clear()
+    }
+
 
 }
 
@@ -55,4 +72,5 @@ enum class SettingsKey {
     IsLoggedIn,
     UserId,
     Difficulty,
+    Username,
 }
