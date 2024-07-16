@@ -4,7 +4,6 @@ Yes, Ziuq is Quiz spelled backward 😀. This is a quiz app built using [Kotlin 
 
 Design inspiration by [MindInventory](https://dribbble.com/shots/20511315-Educational-Quiz-App)
 
-[![Build](https://github.com/xxfast/NYTimes-KMP/actions/workflows/build.yml/badge.svg)](https://github.com/xxfast/NYTimes-KMP/actions/workflows/build.yml)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.21-blue.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
 ## Platforms
